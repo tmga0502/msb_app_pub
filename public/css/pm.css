@@ -1,0 +1,44 @@
+
+label {
+  white-space: nowrap;
+}
+
+.table-wrapper {
+  /*table全体のラッパー。スクロールを表示する*/
+  max-width: 100%;
+  overflow: scroll;
+}
+
+
+.table-wrapper > table > thead > tr > th{
+  white-space:nowrap;
+  text-align:center;
+}
+
+.table-wrapper > table > tbody > tr > td,
+.table-wrapper > table > tbody > tr > td >input[type="text"]{
+  white-space:nowrap;
+  text-align:right;
+}
+
+
+
+#fix1{
+  /*最初の要素を固定する*/
+  padding: 8px 0px;
+  background-color: #eee;
+  position: sticky;
+  left: -1px;
+  text-align: center;
+}
+
+.table-wrapper > table > tbody > tr > td:first-of-type,
+.table-wrapper > table > thead > tr > th:first-of-type {
+  white-space: nowrap;
+  padding: 8px 8px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: -1px;
+  text-align: center;
+}

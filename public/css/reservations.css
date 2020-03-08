@@ -1,0 +1,33 @@
+.reserve_hour_top,
+.reserve_hour_body {
+  border: 1px solid black;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.reserve_hour_bottom {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.s_name {
+  border: 1px solid black;
+  border-left: 0;
+  text-align: center;
+}
+
+.reserve_space_top {
+  border-right: 1px solid black;
+}
+
+.reserve_space_body {
+  border-top: 1px dotted black;
+  border-right: 1px solid black;
+  border-left: 0;
+}
+
+.reserve_space_bottom {
+  border: 1px solid black;
+  border-top: 1px dotted black;
+  border-left: 0;
+}

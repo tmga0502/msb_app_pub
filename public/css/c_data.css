@@ -1,0 +1,68 @@
+.list_td {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.table-wrapper {
+  /*table全体のラッパー。スクロールを表示する*/
+  max-width: 100%;
+  overflow: scroll;
+}
+
+.fix {
+  /*最初の要素を固定する*/
+  padding: 8px 0px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  text-align: left;
+}
+
+.fix_td1 {
+  white-space: nowrap;
+  width: 110px;
+  padding: 8px 0px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  text-align: center;
+}
+
+.fix_td2 {
+  white-space: nowrap;
+  padding: 8px 0px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 107px;
+  text-align: center;
+}
+
+/* 予実管理票用 */
+.fix_td1_budget {
+  white-space: nowrap;
+  width: 110px;
+  padding: 8px 0px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  text-align: center;
+}
+
+.fix_td2_budget {
+  white-space: nowrap;
+  padding: 8px 0px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 97px;
+  text-align: center;
+}
+
+.bgRight {
+  text-align:right;
+}

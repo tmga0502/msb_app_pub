@@ -1,0 +1,86 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
+
+table {
+  margin: 10px;
+  border-collapse: collapse;
+}
+
+#title {
+  font-size: 24px;
+  text-align: center;
+  border-bottom: double;
+}
+
+.date {
+  font-size: 16px;
+}
+
+.musubiya {
+  font-size: 14px;
+}
+
+.between {
+  height: 30px;
+}
+
+#goukei > td {
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+}
+
+.hyouzi {
+  font-size: 18px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.tax {
+  font-size: 18px;
+}
+
+#dai > td,
+.income > td,
+.outcome > td {
+  border: 1px black solid;
+  font-size: 16px;
+}
+
+#inOut > td {
+  border: 1px black solid;
+  border-top: double;
+  font-size: 16px;
+}
+
+#remark > td {
+  border-top: 1px black solid;
+}
+
+.remark_left {
+  border-left: 1px black solid;
+}
+
+.remark_bottom {
+  border-bottom: 1px black solid;
+}
+
+.remark_right {
+  border-right: 1px black solid;
+}
+
+.No {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100px;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+}

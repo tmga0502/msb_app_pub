@@ -1,0 +1,76 @@
+.othersComment {
+  display: none;
+  /* position: absolute; */
+  bottom: -2.8em;
+  left: 0.3em;
+  z-index: 9999;
+  padding: 0.3em 0.5em;
+  color: #ffffff;
+  background: #c72439;
+  border-radius: 0.5em;
+}
+.othersComment:after {
+  width: 20%;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0.5em;
+  top: -8px;
+  border-top: 8px solid transparent;
+  border-left: 8px solid #c72439;
+}
+.othersPrice:hover .othersComment {
+  display: block;
+}
+
+label {
+  white-space: nowrap;
+}
+
+.table-wrapper {
+  /*table全体のラッパー。スクロールを表示する*/
+  max-width: 100%;
+  overflow: scroll;
+}
+
+
+.table-wrapper > table > thead > tr > th{
+  white-space:nowrap;
+  text-align:center;
+}
+
+.table-wrapper > table > tbody > tr > td,
+.table-wrapper > table > tbody > tr > td >input[type="text"]{
+  white-space:nowrap;
+  text-align:right;
+}
+
+
+
+#fix1{
+  /*最初の要素を固定する*/
+  padding: 8px 0px;
+  background-color: #eee;
+  position: sticky;
+  left: -1px;
+  text-align: center;
+}
+
+.table-wrapper > table > tbody > tr > td:first-of-type {
+  white-space: nowrap;
+  padding: 8px 8px;
+  background-color: #eee;
+  position: -webkit-sticky;
+  position: sticky;
+  left: -1px;
+  text-align: center;
+}
+
+.rent, .consignment{
+  color:red;
+}
+
+/* 入力さセル項目を黄色くする */
+.advanceExpensesTd, .bonusTd{
+  background-color:yellow;
+}

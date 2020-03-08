@@ -1,0 +1,24 @@
+.btn_c {
+	width: 60px;
+	height: 38px;
+	background: #FFF;
+	background: -moz-linear-gradient(top,#FFF 0%,#DDD);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+	border: 1px solid #2a82a3;
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	color: #2a82a3;
+	padding: 42px 20px 20px;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 120%;
+	transition: background-color 0.5s ease-in;
+	-webkit-transition: background-color 0.5s ease-in;
+}
+.btn_c:hover {
+	background: #2a82a3;
+	color: #FFF;
+	border: 1px solid #FFF;
+}

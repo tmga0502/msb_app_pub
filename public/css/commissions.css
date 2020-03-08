@@ -1,0 +1,47 @@
+.table-wrapper {
+  /*table全体のラッパー。スクロールを表示する*/
+  max-width: 100%;
+  overflow: scroll;
+}
+
+
+.table-wrapper > table > thead tr{
+  /*最初の要素を固定する*/
+  padding: 8px 0px;
+  background-color: #eee;
+  position: sticky;
+  top: 0px;
+}
+
+
+
+.table-wrapper > table > tbody tr td:first-of-type,
+.table-wrapper > table > thead tr th:first-of-type {
+  /*最初の要素を固定する*/
+  padding: 8px 0px;
+  background-color: #eee;
+  position: sticky;
+  left: -1px;
+  text-align: left;
+}
+
+
+
+/* .table-wrapper > table > tbody td > input[type="text"] {
+  height: 100%;
+  border: 0;
+} */
+
+#apartmentName {
+  width: 300px;
+}
+
+/* 個人分まとめページ用 */
+#indivi_th_tr > th {
+  white-space:nowrap;
+  text-align:center;
+}
+#indivi_td_tr > td {
+  white-space:nowrap;
+  text-align:right;
+}
