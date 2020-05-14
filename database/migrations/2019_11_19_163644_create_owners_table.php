@@ -16,13 +16,13 @@ class CreateOwnersTable extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pms_id');//foreignKye
-            $table->string('corporate_name', 255);//会社名
+            $table->string('corporate_name', 191);//会社名
             $table->string('owner_name', 50);//オーナー名
             $table->unsignedInteger('first_code')->default(0);//郵便番号1
             $table->unsignedInteger('last_code')->default(0);//郵便番号2
             $table->string('prefecture', 10)->default('');//住所１(都道府県)
             $table->string('city', 20)->default('');//市区町村
-            $table->string('address')->default('');//以降の住所
+            $table->string('address', 100)->default('');//以降の住所
             $table->string('tel', 20);//電話番号
             $table->string('phone', 20);//携帯番号
             $table->string('bank', 50)->default('');//銀行名
@@ -32,11 +32,6 @@ class CreateOwnersTable extends Migration
             $table->string('pay_name', 50)->default('');//振込名義
             $table->timestamps();
 
-            $table
-              ->foreign('pms_id')
-              ->references('id')
-              ->on('pms')
-              ->onDelete('cascade');
         });
     }
 

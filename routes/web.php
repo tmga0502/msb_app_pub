@@ -12,34 +12,10 @@
 */
 
 
-//ログイン画面Top(設備予約)
+//ログイン画面Top
 Route::get('/',[
-  'uses' => 'UserController@getLoginReserve',
-  'as' => 'login_reserve'
-]);
-
-//ログイン画面(業務ツール)
-Route::get('/login_commissions',[
-  'uses' => 'UserController@getLoginCommissions',
-  'as' => 'login_commissions'
-]);
-
-//ログイン画面(物件管理)
-Route::get('/login_pm',[
-  'uses' => 'UserController@getLoginPm',
-  'as' => 'login_pm'
-]);
-
-//ログイン画面(顧客管理表)
-Route::get('/login_customer',[
-  'uses' => 'UserController@getLoginCustomer',
-  'as' => 'login_customer'
-]);
-
-//ログイン画面(管理者ページ)
-Route::get('/login_root',[
-  'uses' => 'UserController@getLoginRoot',
-  'as' => 'login_root'
+  'uses' => 'UserController@getLogin',
+  'as' => 'login'
 ]);
 
 //緊急用サインアップ画面表示
@@ -63,61 +39,23 @@ Route::post('/e_signup/new',[
 
 //ログイン認証(設備予約)
 Route::post('/',[
-  'uses' => 'UserController@postLoginReserve',
-  'as' => 'login.login_reserve'
+  'uses' => 'UserController@postLogin',
+  'as' => 'login.login'
   ]);
-
-//ログイン認証(コミッション請求書)
-Route::post('/login_commissions',[
-  'uses' => 'UserController@postLoginCommission',
-  'as' => 'login.login_commissions'
-  ]);
-
-//ログイン認証(物件管理)
-Route::post('/login_pm',[
-  'uses' => 'UserController@postLoginPm',
-  'as' => 'login.login_pm'
-  ]);
-
-//ログイン認証(顧客管理表)
-Route::post('/login_customer',[
-  'uses' => 'UserController@postLoginCustomer',
-  'as' => 'login.login_customer'
-]);
-
-//ログイン認証(管理者)
-Route::post('/login_root',[
-  'uses' => 'UserController@postLoginRoot',
-  'as' => 'login.login_root'
-]);
 
 
 //ログイン保護
 Route::group(['middleware' => 'auth'], function(){
 
-
 /*
   |--------------------------------------------------------------------------
-  | 各エージェントtop
+  | トップページ
   |--------------------------------------------------------------------------
 */
-
-  // 業務委託トップ
-  Route::get('/agent',[
-  'uses' => 'UserController@getAgentTop',
-  'as' => 'agent.top'
-  ]);
-
-  // 正社員トップ
-  Route::get('/employee',[
-  'uses' => 'UserController@getEmployeeTop',
-  'as' => 'employee.top'
-  ]);
-
-  // 管理者トップ
-  Route::get('/manager',[
-  'uses' => 'UserController@getManagerTop',
-  'as' => 'manager.top'
+  // トップページ
+  Route::get('/top',[
+  'uses' => 'UserController@getTop',
+  'as' => 'getTop'
   ]);
 
 
@@ -127,11 +65,18 @@ Route::group(['middleware' => 'auth'], function(){
   |--------------------------------------------------------------------------
 */
 
+  // 設備予約home
+  Route::get('/reserve_home',[
+  'uses' => 'ReserveController@getReserveHome',
+  'as' => 'reservation.home'
+  ]);
+
   // 設備予約トップ
   Route::get('/reserve_top/{year}/{month}/{day}',[
   'uses' => 'ReserveController@getTop',
   'as' => 'reservation.top'
   ]);
+
 
   // 設備予約マイページ
   Route::get('/reserve_mypage',[

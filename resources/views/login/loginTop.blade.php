@@ -8,7 +8,7 @@
         <div class="page-form" style="margin: 100px auto;">
             <div class="panel panel-blue">
                 <div class="panel-body pan">
-                    <form method="POST" action="{{ route('login_reserve') }}" class="form-horizontal">
+                    <form method="POST" action="{{ route('login.login') }}" class="form-horizontal">
                     <div class="form-body pal">
                         <div class="col-xs-12 text-center">
                             <h1 style="margin-top: -90px; font-size: 36px;">
@@ -65,6 +65,7 @@
                     </div>
                     </form>
                 </div>
+                <a href="{{ route('e_signup') }}">signup<a>
             </div>
         </div>
     </div>

@@ -22,10 +22,10 @@ class CreatePropertyInformationTable extends Migration
             $table->unsignedInteger('last_code')->default(0);//郵便番号2
             $table->string('prefecture', 10)->default('');//住所１(都道府県)
             $table->string('city', 20)->default('');//市区町村
-            $table->string('address')->default('');//以降の住所
+            $table->string('address', 191)->default('');//以降の住所
             $table->string('real_estate_agent', 50)->default('');//管理会社
-            $table->string('tel')->default('');//管理会社tel
-            $table->string('fax')->default('');//管理会社fax
+            $table->string('tel', 50)->default('');//管理会社tel
+            $table->string('fax', 50)->default('');//管理会社fax
             $table->string('person_in_charge', 20)->default('');//担当者名
             $table->date('contract_start')->nullable()->default(null);//賃発
             $table->date('contract_end')->nullable()->default(null);//解約

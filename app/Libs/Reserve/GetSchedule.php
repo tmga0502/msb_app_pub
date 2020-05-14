@@ -94,7 +94,7 @@ class GetSchedule {
     for($j = 0; $j < count($user); $j++){
       $userID = $user[$j][0]['id'];
       if($myID->superUser == 1 ){
-        $base_html[] = '<a href="https://msbyapp.skr.jp/reserve_description/' . $routeID[$j] . '">
+        $base_html[] = '<a href="' . url('/') . '/reserve_description/' . $routeID[$j] . '">
                 <div style="height:70px;border: 1px solid darkgray;border-radius: 1em;margin:4px;font-size:1em;color:black;background-color:skyblue;">
                 <p>' . $msg[$j] . '</p>
                 </div></a>';

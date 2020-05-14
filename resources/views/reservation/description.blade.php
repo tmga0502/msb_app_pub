@@ -3,14 +3,37 @@
 @section('content')
 
 <div id="wrapper">
-<!--BEGIN SIDEBAR MENU-->
-@include('reservation.side_menu')
-<!--END SIDEBAR MENU-->
-  <div id="page-wrapper">
+<!--BEGIN TITLE & BREADCRUMB PAGE-->
+    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+        <div class="page-header pull-left">
+            <div class="page-title">
+                新規予約
+            </div>
+        </div>
+        <ol class="breadcrumb page-breadcrumb pull-right">
+            <li>
+              <a href="{{ route('getTop') }}">TOP</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li>
+              <a href="{{ route('reservation.home') }}">設備予約home</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li>
+              <a href="{{ route('reservation.top',['year' => $year, 'month' => $month, 'day' => $day]) }}">設備予約一覧</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li class="active">予約詳細</li>
+        </ol>
+        <div class="clearfix">
+        </div>
+    </div>
+<!--END TITLE & BREADCRUMB PAGE-->
+<!--BEGIN CONTENT-->
+<div id="page-wrapper" style="margin:0">
     <div class="page-content">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="col-md-12 col-sm-12">
+        <div class="col-md-6 col-md-offset-3">
 
               <!-- start 予定詳細 -->
               <div class="panel panel-grey">
@@ -47,6 +70,11 @@
                                     <option value="印鑑" selected>印鑑</option>
                                   @else
                                     <option value="印鑑">印鑑</option>
+                                  @endif
+                                  @if($context->space_name == 'ZOOM')
+                                    <option value="ZOOM" selected>ZOOM</option>
+                                  @else
+                                    <option value="ZOOM">ZOOM</option>
                                   @endif
                                 </select>
                               </td>
@@ -215,7 +243,7 @@
               <!-- end 予定詳細 -->
 
 
-        </div><!-- end col-lg-6 -->
+        </div><!-- end col-md-6 -->
 
 
       </div><!-- end row -->

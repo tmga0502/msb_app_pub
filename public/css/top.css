@@ -1,24 +1,49 @@
 .btn_c {
-	width: 60px;
-	height: 38px;
-	background: #FFF;
-	background: -moz-linear-gradient(top,#FFF 0%,#DDD);
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
-	border: 1px solid #2a82a3;
-	border-radius: 70px;
-	-moz-border-radius: 70px;
-	-webkit-border-radius: 70px;
-	color: #2a82a3;
-	padding: 42px 20px 20px;
-	display: block;
-	text-align: center;
-	font-weight: bold;
-	font-size: 120%;
-	transition: background-color 0.5s ease-in;
-	-webkit-transition: background-color 0.5s ease-in;
+  width: 60px;
+  height: 38px;
+  background: #fff;
+  background: -moz-linear-gradient(top, #fff 0%, #ddd);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fff),
+    to(#ddd)
+  );
+  border: 1px solid #2a82a3;
+  border-radius: 70px;
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  color: #2a82a3;
+  padding: 42px 20px 20px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 120%;
+  transition: background-color 0.5s ease-in;
+  -webkit-transition: background-color 0.5s ease-in;
 }
 .btn_c:hover {
-	background: #2a82a3;
-	color: #FFF;
-	border: 1px solid #FFF;
+  background: #2a82a3;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/*div要素全体にリンクをつけるために必要な要素*/
+.linkbox {
+  position: relative;
+}
+.linkbox a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* 以下見た目をわかりやすくするための設定*/
+.linkbox a:hover {
+  /* マウスオーバー時に色変更*/
+  opacity: 0.1;
+  background-color: #000000;
 }

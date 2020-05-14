@@ -3,14 +3,34 @@
 @section('content')
 
 <div id="wrapper">
-<!--BEGIN SIDEBAR MENU-->
-@include('reservation.side_menu')
-<!--END SIDEBAR MENU-->
-<div id="page-wrapper">
+<!--BEGIN TITLE & BREADCRUMB PAGE-->
+    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+        <div class="page-header pull-left">
+            <div class="page-title">
+                マイページ
+            </div>
+        </div>
+        <ol class="breadcrumb page-breadcrumb pull-right">
+            <li>
+              <a href="{{ route('getTop') }}">TOP</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li>
+              <a href="{{ route('reservation.home') }}">設備予約home</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li class="active">マイページ</li>
+        </ol>
+        <div class="clearfix">
+        </div>
+    </div>
+<!--END TITLE & BREADCRUMB PAGE-->
+<!--BEGIN CONTENT-->
+<div id="page-wrapper" style="margin:0">
   <div class="page-content">
       <div class="row">
-        <div class="col-lg-12">
-                <div class="panel panel-red">
+        <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-info">
                   <!-- 予約一覧 -->
                     <div class="panel-heading">{{ Auth::user()->name }}'s&nbsp;予約一覧&nbsp;&nbsp;
                       <span style="font-size:14px;">※{{$dt->format('m月d日')}}以降分</span>
@@ -38,7 +58,7 @@
                             <td class="col-sm-1">{{ $us['purpose'] }}</td>
                             <td class="col-sm-4" style="text-align:left">{{ $us['description'] }}</td>
                             <td class="col-sm-1">{{ $us['space_name'] }}</td>
-                            <td class="col-sm-1"><a href="https://msbyapp.skr.jp/reserve_description/{{ $us['id'] }}">
+                            <td class="col-sm-1"><a href="{{ $url . $us['id'] }}">
                               <button class="btn btn-info btn-xs">編集ページヘ</button>
                             </a></td>
                           </tr>

@@ -34,5 +34,11 @@
               {!! $I !!}
               @endforeach
             </div>
+            <!-- ZOOM -->
+            <div class="col-xs-2" style="padding:0;">
+              @foreach($schedule_Z as $Z)
+              {!! $Z !!}
+              @endforeach
+            </div>
         </div><br>
   </div>

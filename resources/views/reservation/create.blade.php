@@ -3,10 +3,30 @@
 @section('content')
 
 <div id="wrapper">
-<!--BEGIN SIDEBAR MENU-->
-@include('reservation.side_menu')
-<!--END SIDEBAR MENU-->
-<div id="page-wrapper">
+<!--BEGIN TITLE & BREADCRUMB PAGE-->
+    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+        <div class="page-header pull-left">
+            <div class="page-title">
+                新規予約
+            </div>
+        </div>
+        <ol class="breadcrumb page-breadcrumb pull-right">
+            <li>
+              <a href="{{ route('getTop') }}">TOP</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li>
+              <a href="{{ route('reservation.home') }}">設備予約home</a>&nbsp;&nbsp;
+              <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li class="active">新規予約</li>
+        </ol>
+        <div class="clearfix">
+        </div>
+    </div>
+<!--END TITLE & BREADCRUMB PAGE-->
+<!--BEGIN CONTENT-->
+<div id="page-wrapper" style="margin:0">
   <div class="page-content">
       <div class="row">
         <div class="col-lg-12">
@@ -35,6 +55,7 @@
                             <option value="Bスペース">Bスペース</option>
                             <option value="Cスペース">Cスペース</option>
                             <option value="印鑑">印鑑</option>
+                            <option value="ZOOM">ZOOM</option>
                           </select>
                         </div>
                         <label class="col-sm-2 col-form-label">

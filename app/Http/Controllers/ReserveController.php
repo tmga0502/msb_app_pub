@@ -30,12 +30,23 @@ class ReserveController extends Controller
         $userID = Auth::user()->id;
         // Scheduleから、userID && 今日以降のものを取得
         $userSchedule = Schedule::where('user_id', '=', $userID)->where('date', '>=', $dt->format('Y-m-d'))->orderBy('date','asc')->paginate(10);
+        $url = url('/') . '/reserve_description/';
 
-        return view('reservation.mypage',  compact('dates','year', 'month','day', 'userSchedule', 'dt'));
+        return view('reservation.mypage',  compact('dates','year', 'month','day', 'userSchedule', 'dt', 'url'));
     }
 
-
-
+/*
+  |--------------------------------------------------------------------------
+  | 設備予約home表示
+  |--------------------------------------------------------------------------
+*/
+    public function getReserveHome(){
+        $dt = Carbon::now();
+        $year = $dt->year;
+        $month = $dt->month;
+        $day = $dt->day;
+        return view('reservation.home',  compact('year', 'month','day'));
+    }
 
 
 /*
@@ -140,9 +151,30 @@ class ReserveController extends Controller
         }
         $schedule_I = $schedule_instance->getScheduleTop($ID_I, $userID_I, $spaceName_I, $purpose_I, $description_I, $startTime_I, $endTime_I);
 
+        //【ZOOMの予定作成】
+        $data_Z = Schedule::where('date', '=',  $date)->where('space_name', '=', 'ZOOM');
+        if ($data_Z->exists()){
+            $ID_Z = $data_Z->pluck('id');
+            $userID_Z = $data_Z->pluck('user_id');
+            $spaceName_Z = $data_Z->pluck('space_name');
+            $purpose_Z = $data_Z->pluck('purpose');
+            $description_Z = $data_Z->pluck('description');
+            $startTime_Z = $data_Z->pluck('start_time');
+            $endTime_Z = $data_Z->pluck('end_time');
+        }else{
+            $ID_Z = [];
+            $userID_Z = [];
+            $spaceName_Z = ['ZOOM'];
+            $purpose_Z = [];
+            $description_Z = [];
+            $startTime_Z =  [];
+            $endTime_Z = [];
+        }
+        $schedule_Z = $schedule_instance->getScheduleTop($ID_Z, $userID_Z, $spaceName_Z, $purpose_Z, $description_Z, $startTime_Z, $endTime_Z);
+
 
     //リターン
-        return view('reservation.top',compact('dates','year', 'month','day', 'schedule_A', 'schedule_B', 'schedule_C', 'schedule_I'));
+        return view('reservation.top',compact('dates','year', 'month','day', 'schedule_A', 'schedule_B', 'schedule_C', 'schedule_I', 'schedule_Z'));
     }
 
 
@@ -228,10 +260,24 @@ class ReserveController extends Controller
         //印鑑のHTML作成
         $schedule_I = $schedule_instance->getTScheduleCreate($spaceName_I, $startTime_I, $endTime_I);
 
+        //【ZOOM】
+        $data_Z = Schedule::where('date', '=',  $date)->where('space_name', '=', 'ZOOM');
+        if ($data_Z->exists()){
+            $spaceName_Z = $data_Z->pluck('space_name');
+            $startTime_Z = $data_Z->pluck('start_time');
+            $endTime_Z = $data_Z->pluck('end_time');
+        }else{
+            $spaceName_Z = ['ZOOM'];
+            $startTime_Z =  [];
+            $endTime_Z = [];
+        }
+        //ZOOMのHTML作成
+        $schedule_Z = $schedule_instance->getTScheduleCreate($spaceName_Z, $startTime_Z, $endTime_Z);
+
 
 
     //リターン
-        return view('reservation.create',compact('dates','year', 'month','day', 'tzList', 'schedule_A', 'schedule_B', 'schedule_C', 'schedule_I'));
+        return view('reservation.create',compact('dates','year', 'month','day', 'tzList', 'schedule_A', 'schedule_B', 'schedule_C', 'schedule_I', 'schedule_Z'));
     }
 
 
@@ -330,10 +376,8 @@ class ReserveController extends Controller
         $update -> end_time = $endTime;
         $update -> date = $date;
         $update -> save();
-        // dd($request->purpose);
 
-
-        return redirect()->route('reservation.mypage') ;
+        return redirect()->route('reservation.top',['year' => $year, 'month' => $month, 'day' => $day]) ;
 
 
     }

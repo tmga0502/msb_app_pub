@@ -16,7 +16,7 @@ class UserController extends Controller
 | ログイントップ(設備予約)
 |--------------------------------------------------------------------------
 */
-    public function getLoginReserve(){
+    public function getLogin(){
      return view('login.loginTop');
     }
 
@@ -43,6 +43,7 @@ class UserController extends Controller
 
         // 保存
         $user->save();
+        return redirect()->route('login');
      }
 
 
@@ -78,6 +79,14 @@ class UserController extends Controller
         return view('Top.manager', compact('year', 'month', 'day'));
     }
 
+    //管理者トップ
+    public function getTop(){
+        $dt = Carbon::now();
+        $year = $dt->year;
+        $month = $dt->month;
+        $day = $dt->day;
+        return view('Top.top', compact('year', 'month', 'day'));
+    }
 
 
 /*
@@ -177,7 +186,7 @@ class UserController extends Controller
 */
 
 // ログイン
-    public function postLoginReserve(Request $request){
+    public function postLogin(Request $request){
         $dt = Carbon::now();
         $year = $dt->year;
         $month = $dt->month;
@@ -186,35 +195,11 @@ class UserController extends Controller
         'loginID' => 'required',
         'password' => 'required|min:6'
         ]);
-            if(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 1, 'contract_type' => 4])){
+            if(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password')])){
                 //セッションに今日の日付を入れる
                 session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
                 //管理者ログイン
-                return redirect()->route('manager.top');
-            }
-            elseif(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 0, 'contract_type' => 0])){
-                //セッションに今日の日付を入れる
-                session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
-                //業務委託ログイン
-                return redirect()->route('agent.top');
-            }
-            elseif(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 0, 'contract_type' => 1])){
-                //セッションに今日の日付を入れる
-                session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
-                //正社員ログイン
-                return redirect()->route('agent.top');
-            }
-            elseif(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 0, 'contract_type' => 2])){
-                //セッションに今日の日付を入れる
-                session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
-                //正社員ログイン
-                return redirect()->route('employee.top');
-            }
-            elseif(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 0, 'contract_type' => 3])){
-                //セッションに今日の日付を入れる
-                session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
-                //正社員ログイン
-                return redirect()->route('employee.top');
+                return redirect()->route('getTop');
             }
 
         return redirect()->back();
@@ -228,7 +213,7 @@ class UserController extends Controller
 */
     public function getLogout(){
         Auth::logout();
-        return redirect()->route('login_reserve');
+        return redirect()->route('login');
     }
 
 }

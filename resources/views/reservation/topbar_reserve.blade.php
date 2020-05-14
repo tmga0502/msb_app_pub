@@ -10,13 +10,10 @@
                   <span class="icon-bar"></span><span class="icon-bar"></span>
                   <span class="icon-bar"></span></button>
                   <a id="logo" href="#" class="navbar-brand">
-                  <span class="fa fa-rocket"></span><span class="logo-text">設備予約</span>
+                  <span class="fa fa-rocket"></span><span class="logo-text">結家アプリ</span>
                   <span style="display: none" class="logo-text-icon">µ</span></a>
               </div>
               <div class="topbar-main">
-                <a id="menu-toggle" href="#" class="hidden-xs">
-                <i class="fa fa-bars"></i>
-                </a>
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
                   <li class="dropdown topbar-user">
                   <a data-hover="dropdown" href="#" class="dropdown-toggle">&nbsp;
