@@ -33,21 +33,18 @@ label {
   overflow: scroll;
 }
 
-
-.table-wrapper > table > thead > tr > th{
-  white-space:nowrap;
-  text-align:center;
+.table-wrapper > table > thead > tr > th {
+  white-space: nowrap;
+  text-align: center;
 }
 
 .table-wrapper > table > tbody > tr > td,
-.table-wrapper > table > tbody > tr > td >input[type="text"]{
-  white-space:nowrap;
-  text-align:right;
+.table-wrapper > table > tbody > tr > td > input[type="text"] {
+  white-space: nowrap;
+  text-align: right;
 }
 
-
-
-#fix1{
+#fix1 {
   /*最初の要素を固定する*/
   padding: 8px 0px;
   background-color: #eee;
@@ -66,11 +63,36 @@ label {
   text-align: center;
 }
 
-.rent, .consignment{
-  color:red;
+.rent,
+.consignment {
+  color: red;
 }
 
 /* 入力さセル項目を黄色くする */
-.advanceExpensesTd, .bonusTd{
-  background-color:yellow;
+.advanceExpensesTd,
+.bonusTd {
+  background-color: yellow;
+}
+
+/*IE時の半角のみstyle*/
+#inputZipcode,
+#inputPhone,
+#inputMonthly_income,
+#inputMin_desired_reward,
+#inputYour_desired_reward,
+#inputEmergency_tel,
+#inputEmergency_zipcode,
+#inputMy_desired_reward,
+#inputC_zipcode,
+#inputSales_staff_phone,
+#inputBank_code,
+#inputBank_number,
+#inputBranch_code,
+#inputBank_number {
+  ime-mode: disabled;
+}
+
+/*display:none*/
+.nonestyle {
+  display: none;
 }

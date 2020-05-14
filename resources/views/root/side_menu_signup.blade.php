@@ -34,6 +34,13 @@
                 <!-- end行間を開ける用 -->
 
 
+                <!-- TOPへ -->
+                <li><a href="{{ route('manager.top') }}"><i class="fa fa-calendar fa-fw">
+                      <div class="icon-bg bg-red"></div>
+                  </i><span class="menu-title">TOPへ</span></a>
+                </li>
+                <!-- END TOPへ -->
+
                 <!-- 設備予約へ -->
                 <li><a href="{{ route('reservation.mypage') }}"><i class="fa fa-calendar fa-fw">
                       <div class="icon-bg bg-red"></div>

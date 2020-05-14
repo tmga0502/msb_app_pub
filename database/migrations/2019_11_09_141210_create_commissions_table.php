@@ -25,7 +25,7 @@ class CreateCommissionsTable extends Migration
             $table->string('partner', 50)->nullable()->default(null);
             $table->integer('brokerage_fee')->length(11)->nullable()->default(null);
             $table->date('b_fee_date')->nullable()->default(null);
-            $table->integer('advertising_fee')->length(11);
+            $table->integer('advertising_fee')->length(11)->nullable()->default(null);
             $table->date('ad_date')->nullable()->default(null);
             $table->integer('am_pm_fee')->length(11)->nullable()->default(null);
             $table->date('am_pm_fee_date')->nullable()->default(null);

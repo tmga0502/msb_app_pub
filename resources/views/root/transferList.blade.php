@@ -42,10 +42,6 @@
                                     <thead>
                                         <tr>
                                             <th>名前</th>
-                                            <th>銀行名</th>
-                                            <th>支店名</th>
-                                            <th>種類</th>
-                                            <th>口座番号</th>
                                             <th>振込額</th>
                                             <th>源泉額</th>
                                         </tr>
@@ -54,16 +50,6 @@
                                     @for($i=0; $i < count($users); $i++)
                                         <tr>
                                             <td>{{ $users[$i]->name }}</td>
-                                            <td>{{ $users[$i]->bank }}</td>
-                                            <td>{{ $users[$i]->bank_branch }}</td>
-                                            <td>
-                                            @if($users[$i]->bank_type == 0)
-                                                普通
-                                            @else
-                                                当座
-                                            @endif
-                                            </td>
-                                            <td>{{ $users[$i]->bank_nuimber }}</td>
                                             <td style="text-align:right;">
                                                 @if(empty($btArray))
                                                     {{ "" }}円
@@ -80,6 +66,11 @@
                                             </td>
                                         </tr>
                                     @endfor
+                                        <tr>
+                                            <td>合計</td>
+                                            <td style="text-align:right;">{{ $taxSum }}円</td>
+                                            <td style="text-align:right;">{{ $btSum }}円</td>
+                                        </tr>
                                     </tbody>
                                     </div>
                                 </table>

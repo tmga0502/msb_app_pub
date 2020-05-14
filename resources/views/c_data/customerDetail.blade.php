@@ -37,10 +37,23 @@
                           <div class="row">
                             <!-- ボタン -->
                               <div class="col-md-12">
-                                <div class=" text-right">
+                                <div class=" text-left">
+                                <label class="control-label">各種編集ページへ</label>
+                                  <a href="{{ route('c_data.edit', [ 'id' => $customerList->id]) }}">
+                                    <button type="btn" class="btn btn-xs btn-blue" name="btn" value="upload"  style="margin-right:20px;">
+                                        基本情報/紹介者</button>
+                                  </a>
                                   <a href="#">
-                                    <button type="btn" class="btn btn-xs btn-primary" name="btn" value="upload"  style="margin-right:20px;">
-                                        編集ページへ</button>
+                                    <button type="btn" class="btn btn-xs btn-red" name="btn" value="upload"  style="margin-right:20px;">
+                                        進捗/売上</button>
+                                  </a>
+                                  <a href="#">
+                                    <button type="btn" class="btn btn-xs btn-dark" name="btn" value="upload"  style="margin-right:20px;">
+                                        物件/その他</button>
+                                  </a>
+                                  <a href="#">
+                                    <button type="btn" class="btn btn-xs btn-orange" name="btn" value="upload"  style="margin-right:20px;">
+                                       各種ファイル</button>
                                   </a>
                                 </div>
                               </div>
@@ -204,7 +217,11 @@
                                             </tr>
                                             <tr>
                                               <td>仲手入金日</td>
+                                              @if(isset($customerList->bfDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->bfDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>AD/業務委託料</td>
@@ -212,7 +229,11 @@
                                             </tr>
                                             <tr>
                                               <td>AD入金日</td>
+                                              @if(isset($customerList->adDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->adDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>仲手割引</td>
@@ -273,15 +294,27 @@
                                             </tr>
                                             <tr>
                                               <td>契約日</td>
+                                              @if(isset($customerList->contractDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->contractDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>賃発日</td>
+                                              @if(isset($customerList->startDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->startDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>解約日</td>
+                                              @if(isset($customerList->endDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->endDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>契約期間</td>
@@ -301,11 +334,19 @@
                                             </tr>
                                             <tr>
                                               <td>決済日</td>
+                                              @if(isset($customerList->settlementDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->settlementDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr>
                                               <td>引渡日</td>
+                                              @if(isset($customerList->contractDate))
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->deliveryDate)) }}</td>
+                                              @else
+                                              <td></td>
+                                              @endif
                                             </tr>
                                             <tr><td colspan=2 class="text-center">書類発送先</td></tr>
                                             <tr>

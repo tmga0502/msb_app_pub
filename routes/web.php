@@ -42,6 +42,18 @@ Route::get('/login_root',[
   'as' => 'login_root'
 ]);
 
+//緊急用サインアップ画面表示
+Route::get('/e_signup',[
+  'uses' => 'UserController@emargencySignup',
+  'as' => 'e_signup'
+]);
+
+//緊急用サインアップ挙動
+Route::post('/e_signup/new',[
+  'uses' => 'UserController@eNew',
+  'as' => 'e_new'
+]);
+
 
 /*
   |--------------------------------------------------------------------------
@@ -421,6 +433,12 @@ Route::post('/profile/budgets/update',[
   Route::get('/customer_list/{id}',[
   'uses' => 'CustomerController@getCustomerDetail',
   'as' => 'c_data.c_detail'
+  ]);
+
+  // 顧客詳細編集ページ表示
+  Route::get('/customer_list/{id}/edit',[
+  'uses' => 'CustomerController@getCustomerDetailEdit',
+  'as' => 'c_data.edit'
   ]);
 
   // 顧客詳細表示->顧客情報更新

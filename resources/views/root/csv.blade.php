@@ -93,7 +93,7 @@
                                 </table>
 
                                 @else
-                                <h3>登録はまだCSVを登録していません</h3>
+                                <h3>まだCSVを登録していません</h3>
                                 @endif
                                 <!-- ページネーション用link -->
                                 <div class="d-flex justify-content-center">
@@ -146,7 +146,7 @@
              </div>
              </form>
          </div>
-        
+
     </div>
 
     <!--END CONTENT-->

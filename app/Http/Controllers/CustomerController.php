@@ -179,6 +179,38 @@ class CustomerController extends Controller
 
 /*
   |--------------------------------------------------------------------------
+  | 顧客詳細編集ページ表示
+  |--------------------------------------------------------------------------
+*/
+    public function getCustomerDetailEdit($id){
+        $dt = Carbon::now();
+        $year = $dt->year;
+        $month = $dt->month;
+        $cList = Customers::where('id', '=', $id)->first();
+
+        $display_year = $this->display_year;//何年表示させるか
+        $status = $this->status;//状況
+        $accuracy = $this->accuracy;//確度
+        $introducer = $this->introducer;//案件種別
+        $introduction_type = $this->introduction_type;//紹介種別
+        $tax = $this->tax;//税率
+        return view('c_data.edit', compact(
+            'cList',
+            'display_year',
+            'status',
+            'accuracy',
+            'introducer',
+            'introduction_type',
+            'tax',
+            'year',
+            'month',
+            'dt'
+
+        ));
+    }
+
+/*
+  |--------------------------------------------------------------------------
   | 顧客新規登録->顧客情報更新
   |--------------------------------------------------------------------------
 */

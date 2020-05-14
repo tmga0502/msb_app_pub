@@ -25,8 +25,8 @@ class GetSumArray {
     $sumArray = [];
     $sumMonthArray = [];
       //ユーザーの個数をカウント（masterは除く）
-      $user_count = User::whereNotIn('name', ['musubiya'])->count();
-      $user_name =  User::get(['name']);
+      $user_count = User::whereNotIn('superUser', [1])->count();
+      $user_name =  User::whereNotIn('superUser', [1])->get(['name']);
       $count = 1;
       foreach($user_name as $user){
 
@@ -93,8 +93,8 @@ class GetSumArray {
     $sumArray = [];
     $sumMonthArray = [];
       //ユーザーの個数をカウント（masterは除く）
-      $user_count = User::whereNotIn('name', ['musubiya'])->count();
-      $user_name =  User::get(['name']);
+      $user_count = User::whereNotIn('superUser', [1])->count();
+      $user_name =  User::whereNotIn('superUser', [1])->get(['name']);
       $count = 1;
       foreach($user_name as $user){
 
@@ -163,8 +163,8 @@ class GetSumArray {
     $sumArray = [];
     $sumMonthArray = [];
       //ユーザーの個数をカウント（masterは除く）
-      $user_count = User::whereNotIn('name', ['musubiya'])->count();
-      $user_name =  User::get(['name']);
+      $user_count = User::whereNotIn('superUser', [1])->count();
+      $user_name =  User::whereNotIn('superUser', [1])->get(['name']);
       $count = 1;
       foreach($user_name as $user){
 
@@ -244,8 +244,8 @@ class GetSumArray {
     $monthArray_othes3 = [];
     $monthArray_othes_sum = [];
     //ユーザーの個数をカウント（masterは除く）
-    $user_count = User::whereNotIn('name', ['musubiya'])->count();
-    $user_name =  User::get(['name']);
+    $user_count = User::whereNotIn('superUser', [1])->count();
+      $user_name =  User::whereNotIn('superUser', [1])->get(['name']);
     $count = 1;
     foreach($user_name as $user){
 

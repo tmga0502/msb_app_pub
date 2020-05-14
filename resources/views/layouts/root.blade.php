@@ -28,6 +28,9 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="{{ url('/') }}/js/root_query.js"></script>
+
+    <!-- 郵便番号用js -->
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 </head>
 
 <body>

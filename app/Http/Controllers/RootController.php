@@ -46,10 +46,10 @@ private $nominalForRoot19 = ['---', 'a', 'b', 'c', 'd', 'e'];
         if ($now_month == 1) {
           $date = $now_year - 1 . '-12';
         } else {
-          $date = $now_year . '-' . $search_month;
+          $date = $now_year . '-' . $now_month;
         }
         //ユーザー情報から、名前、銀行名、支店名、普or当、口座番号取得
-        $users = User::whereNotIn('name', ['musubiya'])->select(['id', 'name', 'bank', 'bank_branch', 'bank_type', 'bank_number'])->get();
+        $users = User::whereNotIn('superUser', [1])->select(['id', 'name', 'bank', 'bank_branch', 'bank_type', 'bank_number'])->get();
         // dd($user);
 
         //①ユーザーidを別クラスに渡して、売上の合計額計算させる
@@ -85,10 +85,14 @@ private $nominalForRoot19 = ['---', 'a', 'b', 'c', 'd', 'e'];
         }
         // dd($btArray);
 
+        // 合計の計算
+        $taxSum = array_sum($tax);
+        $btSum = array_sum($btArray);
+
 
 
         //①〜③をreturn
-        return view('root.transferList',compact('now_year', 'now_month', 'now_day', 'users', 'tax', 'btArray'));
+        return view('root.transferList',compact('now_year', 'now_month', 'now_day', 'users', 'tax', 'btArray', 'taxSum', 'btSum'));
     }
 
 /*
@@ -234,7 +238,7 @@ public function bacNumberCsv($bank_number, $year, $month){
         $month = $now_month - 1;
         $date = $now_year . '-' . $month . '-30';
         //ユーザー情報から、名前
-        $users = User::whereNotIn('name', ['musubiya'])->select(['id', 'name'])->get();
+        $users = User::whereNotIn('superUser', [1])->select(['id', 'name'])->get();
 
         //経費一覧作成classのインスタンス化
         $getSumArray = new Root\GetSumArray;
@@ -276,10 +280,10 @@ public function bacNumberCsv($bank_number, $year, $month){
 */
     public function geteCreateEpense($now_year, $now_month, $now_day){
       $month = $now_month - 1;
-      $date = $now_year . '-' . $month . '-30';
+      $date = $now_year . '-' . $month . '-28';
       $datas = [];
         //ユーザー情報から、名前
-        $users = User::whereNotIn('name', ['musubiya'])->select(['id', 'name'])->get();
+        $users = User::whereNotIn('superUser', [1])->select(['id', 'name'])->get();
         foreach($users as $user){
           $expenses = Expenses::where('date', '=', $date)->where('user_id', '=', $user->id)->first();
           $datas[] = $expenses;
@@ -307,26 +311,26 @@ public function bacNumberCsv($bank_number, $year, $month){
   |--------------------------------------------------------------------------
 */
     public function postCreateEpense(Request $request){
-      $users = User::whereNotIn('name', ['musubiya'])->select(['id', 'name'])->get();
+      $users = User::whereNotIn('superUser', [1])->select(['id', 'name'])->get();
       $year = $request->year;
       $month = $request->month;
       $count_users = User::All()->count();//管理者用ユーザは除外
-      $date = $year . '-' . $month . '-30';
+      $date = $year . '-' . $month . '-28';
       $array = [];
       $user_id_array = [];
       for($i = 0; $i < $count_users; $i++){
         $user_id = $request->user_id[$i];
-        $party = $request->party[$i];
-        $times = $request->times[$i];
-        $c_cost = $request->c_cost[$i];
-        $atbb = $request->atbb[$i];
-        $atbb_customer = $request->atbb_customer[$i];
-        $regular = $request->regular[$i];
-        $other1 = $request->other1[$i];
+        $party = ($request->party[$i] == '') ? null : $request->party[$i];
+        $times = ($request->times[$i] == '') ? null : $request->times[$i];
+        $c_cost = ($request->c_cost[$i] == '') ? null : $request->c_cost[$i];
+        $atbb = ($request->atbb[$i] == '') ? null : $request->atbb[$i];
+        $atbb_customer = ($request->atbb_customer[$i] == '') ? null : $request->atbb_customer[$i];
+        $regular = ($request->regular[$i] == '') ? null : $request->regular[$i];
+        $other1 = ($request->other1[$i] == '') ? null : $request->other1[$i];
         $other1_remark = $request->other1_remark[$i];
-        $other2 = $request->other2[$i];
+        $other2 = ($request->other2[$i] == '') ? null : $request->other2[$i];
         $other2_remark = $request->other2_remark[$i];
-        $other3 = $request->other3[$i];
+        $other3 = ($request->other3[$i] == '') ? null : $request->other3[$i];
         $other3_remark = $request->other3_remark[$i];
 
         $expens_array = [
@@ -403,7 +407,7 @@ public function bacNumberCsv($bank_number, $year, $month){
 */
 
   public function getUserList($now_year, $now_month, $now_day){
-    $userList = User::where('leaving', '=', null)->get();
+    $userList = User::whereNotIn('superUser', [1])->where('leaving', '=', null)->get();
 
     return view('root.userList',compact('now_year', 'now_month', 'now_day','userList'));
 

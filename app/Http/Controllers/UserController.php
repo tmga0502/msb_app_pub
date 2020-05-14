@@ -20,6 +20,32 @@ class UserController extends Controller
      return view('login.loginTop');
     }
 
+// 緊急用サインアップ画面
+    public function emargencySignup(){
+     return view('login.e_signup');
+    }
+
+     public function eNew(Request $request){
+        // バリデーション
+        $this->validate($request,[
+        'name' => 'required',
+        'loginID' => 'required',
+        'password' => 'required|min:6',
+        'contract_type' => 'required'
+        ]);
+        // DBインサート
+        $user = new User([
+            'name' => $request->input('name'),
+            'loginID' => $request->input('loginID'),
+            'password' => bcrypt($request->input('password')),
+            'contract_type' => $request->contract_type
+        ]);
+
+        // 保存
+        $user->save();
+     }
+
+
 /*
 |--------------------------------------------------------------------------
 | 雇用形態別Top
@@ -80,27 +106,16 @@ class UserController extends Controller
         'password' => 'required|min:6',
         'contract_type' => 'required'
         ]);
-        if($request->birthday == ""){
-         $birthday = null;
-        }else{
-         $birthday = $request->birthday;
-        }
-        if($request->hire == ""){
-         $hire = null;
-        }else{
-         $hire = $request->hire;
-        }
-        if($request->legal_hire == ""){
-         $legal_hire = null;
-        }else{
-         $legal_hire = $request->legal_hire;
-        }
+        $birthday = ($request->birthday == "") ? null : $request->birthday;
+        $hire = ($request->hire == "") ? null : $request->hire;
+        $legal_hire = ($request->legal_hire == "") ? null : $request->legal_hire;
         // DBインサート
         $user = new User([
             'name' => $request->input('name'),
             'loginID' => $request->input('loginID'),
             'password' => bcrypt($request->input('password')),
             'contract_type' => $request->contract_type,
+            'superUser' => $request->superUser,
             'bank' => $request->bank,
             'bank_branch' => $request->bank_branch,
             'bank_type' => $request->bank_type,
@@ -109,17 +124,22 @@ class UserController extends Controller
             'lineID' => $request->lineID,
             'msby_mail' => $request->msby_mail,
             'original_mail' => $request->original_mail,
+            'zipcode' => $request->zipcode,
             'address' => $request->address,
+            'mansion_name' => $request->mansion_name,
+            'r_zipcode' => $request->r_zipcode,
             'resident_card' => $request->resident_card,
+            'r_mansion_name' => $request->r_mansion_name,
             'emergency_name' => $request->emergency_name,
             'relationship' => $request->relationship,
             'emergency' => $request->emergency,
+            'e_zipcode' => $request->e_zipcode,
             'emergency_address' => $request->emergency_address,
+            'e_mansion_name' => $request->e_mansion_name,
             'birthday' => $birthday,
             'hire' => $hire,
             'legal_hire' => $legal_hire,
             'employee_number' => $request->employee_number,
-            'virus_soft' => $request->virus_soft,
             'licence' => $request->licence
         ]);
 
@@ -166,7 +186,7 @@ class UserController extends Controller
         'loginID' => 'required',
         'password' => 'required|min:6'
         ]);
-            if(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 1])){
+            if(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password'), 'superUser' => 1, 'contract_type' => 4])){
                 //セッションに今日の日付を入れる
                 session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
                 //管理者ログイン

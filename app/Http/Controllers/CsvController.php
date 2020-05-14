@@ -143,8 +143,8 @@ class CsvController extends Controller
         // commissionTableのcreate
         foreach ($inportCsv as $in) {
             Commissions::create([
-                'csv_id' => $in->id, 
-                'user_id' => $in->charge,
+                'csv_id' => $in->id,
+                'user_id' => $in->person,
                 'receiver_percent' => $jsonArray
             ]);
         }
