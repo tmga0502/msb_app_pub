@@ -18,7 +18,7 @@
 
                         <!-- 設備予約 -->
                         <a href="{{ route('reservation.top',['year' => $year, 'month' => $month, 'day' => $day]) }}">
-                            <button type="button" class="btn btn-primary btn-lg" style="width:100%;">設備予約</button>
+                            <button type="button" class="btn btn-primary btn-lg" style="width:100%;">設備予約です</button>
                             <br><br>
                         </a>
 
@@ -94,5 +94,5 @@
 
     </div>
 </div>
-    
+
 @endsection
