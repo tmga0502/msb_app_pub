@@ -39,15 +39,15 @@
                               <div class="col-md-12">
                                 <div class=" text-left">
                                 <label class="control-label">各種編集ページへ</label>
-                                  <a href="{{ route('c_data.edit', [ 'id' => $customerList->id]) }}">
+                                  <a href="{{ route('c_data.editBase', [ 'id' => $customerList->id]) }}">
                                     <button type="btn" class="btn btn-xs btn-blue" name="btn" value="upload"  style="margin-right:20px;">
                                         基本情報/紹介者</button>
                                   </a>
-                                  <a href="#">
+                                  <a href="{{ route('c_data.editSales', [ 'id' => $customerList->id]) }}">
                                     <button type="btn" class="btn btn-xs btn-red" name="btn" value="upload"  style="margin-right:20px;">
                                         進捗/売上</button>
                                   </a>
-                                  <a href="#">
+                                  <a href="{{ route('c_data.editProperty', [ 'id' => $customerList->id]) }}">
                                     <button type="btn" class="btn btn-xs btn-dark" name="btn" value="upload"  style="margin-right:20px;">
                                         物件/その他</button>
                                   </a>
@@ -203,46 +203,98 @@
                                     <div class="panel-heading">売上情報</div>
                                       <div class="panel-body">
                                         <table class="table">
+                                          @if($customerList->statues == "---" || $customerList->statues == "その他")
                                             <tr>
                                               <td>予定売上</td>
                                               <td>{{ $customerList->plannedSales }}</td>
                                             </tr>
                                             <tr>
                                               <td>着金予想月</td>
-                                              <td>{{ $customerList->expectedPayment }}</td>
+                                              @if($customerList->expectedPayment == null)
+                                              <td></td>
+                                              @else
+                                              <td>{{ date('Y年m月',  strtotime($customerList->expectedPayment)) }}</td>
+                                              @endif
                                             </tr>
+                                          @endif
+
+                                          @if($customerList->statues == "申込")
+                                            <tr>
+                                              <td>仲介手数料（予定）</td>
+                                              <td>{{ $customerList->planBF }}</td>
+                                            </tr>
+                                            <tr>
+                                              <td>仲手入金予定</td>
+                                              @if($customerList->bfSche == null)
+                                              <td></td>
+                                              @else
+                                              <td>{{ date('Y年m月d日',  strtotime($customerList->bfSche)) }}</td>
+                                              @endif
+                                            </tr>
+                                            <tr>
+                                              <td>AD（予定）</td>
+                                              <td>{{ $customerList->planAD }}</td>
+                                            </tr>
+                                            <tr>
+                                              <td>AD入金予定</td>
+                                              @if($customerList->adSche == null)
+                                              <td></td>
+                                              @else
+                                              <td>{{ date('Y年m月d日',  strtotime($customerList->adSche)) }}</td>
+                                              @endif
+                                            </tr>
+                                            <tr>
+                                          @endif
+                                          @if($customerList->statues == "審査通過" || $customerList->statues == "契約締結(完了)")
                                             <tr>
                                               <td>仲介手数料</td>
                                               <td>{{ $customerList->bf }}</td>
                                             </tr>
                                             <tr>
                                               <td>仲手入金日</td>
-                                              @if(isset($customerList->bfDate))
-                                              <td>{{ date('Y年m月d日',  strtotime($customerList->bfDate)) }}</td>
-                                              @else
+                                              @if($customerList->bfDate == null)
                                               <td></td>
+                                              @else
+                                              <td>{{ date('Y年m月d日',  strtotime($customerList->bfDate)) }}</td>
                                               @endif
                                             </tr>
                                             <tr>
-                                              <td>AD/業務委託料</td>
+                                              <td>AD</td>
                                               <td>{{ $customerList->ad }}</td>
                                             </tr>
                                             <tr>
                                               <td>AD入金日</td>
-                                              @if(isset($customerList->adDate))
+                                              @if($customerList->adDate == null)
+                                              <td></td>
+                                              @else
                                               <td>{{ date('Y年m月d日',  strtotime($customerList->adDate)) }}</td>
+                                              @endif
+                                            </tr>
+                                            <tr>
+                                              <td>業務委託料</td>
+                                              <td>{{ $customerList->outsource }}</td>
+                                            </tr>
+                                            <tr>
+                                              <td>業務委託料入金日</td>
+                                              @if(isset($customerList->osDate))
+                                              <td>{{ date('Y年m月d日',  strtotime($customerList->osDate)) }}</td>
                                               @else
                                               <td></td>
                                               @endif
                                             </tr>
                                             <tr>
-                                              <td>仲手割引</td>
+                                              <td>仲手相殺</td>
                                               <td>{{ $customerList->disBF }}</td>
                                             </tr>
                                             <tr>
-                                              <td>AD還元</td>
+                                              <td>AD相殺</td>
                                               <td>{{ $customerList->disAD }}</td>
                                             </tr>
+                                            <tr>
+                                              <td>外部紹介料</td>
+                                              <td>{{ $customerList->introFee }}</td>
+                                            </tr>
+                                          @endif
                                         </table>
                                       </div>
                                 </div>
@@ -288,10 +340,12 @@
                                               <td>マンション</td>
                                               <td>{{ $customerList->mansion_name }}</td>
                                             </tr>
+                                            @if($customerList->i_type == '【賃貸】自己案件' || $customerList->i_type == '【賃貸】社内紹介')
                                             <tr>
                                               <td>賃料</td>
                                               <td>{{ $customerList->rent }}</td>
                                             </tr>
+                                            @endif
                                             <tr>
                                               <td>契約日</td>
                                               @if(isset($customerList->contractDate))
@@ -300,6 +354,7 @@
                                               <td></td>
                                               @endif
                                             </tr>
+                                            @if($customerList->i_type == '【賃貸】自己案件' || $customerList->i_type == '【賃貸】社内紹介')
                                             <tr>
                                               <td>賃発日</td>
                                               @if(isset($customerList->startDate))
@@ -332,6 +387,8 @@
                                               <td>更新料</td>
                                               <td>{{ $customerList->renewalFee }}</td>
                                             </tr>
+                                            @endif
+                                            @if($customerList->i_type == '【売買】自己案件' || $customerList->i_type == '【売買】社内紹介')
                                             <tr>
                                               <td>決済日</td>
                                               @if(isset($customerList->settlementDate))
@@ -348,6 +405,7 @@
                                               <td></td>
                                               @endif
                                             </tr>
+                                            @endif
                                             <tr><td colspan=2 class="text-center">書類発送先</td></tr>
                                             <tr>
                                               <td>宛名</td>
@@ -378,6 +436,7 @@
                                     <div class="panel-heading">その他情報</div>
                                       <div class="panel-body">
                                         <table class="table">
+                                            @if($customerList->i_type == '【賃貸】自己案件' || $customerList->i_type == '【賃貸】社内紹介')
                                             <tr>
                                               <td>管理会社名</td>
                                               <td>{{ $customerList->mcName }}</td>
@@ -406,10 +465,13 @@
                                               <td>かな</td>
                                               <td>{{ $customerList->actingKana }}</td>
                                             </tr>
+                                            @endif
+                                            @if($customerList->i_type == '【売買】自己案件' || $customerList->i_type == '【売買】社内紹介')
                                             <tr>
                                               <td>銀行ローン</td>
                                               <td>{{ $customerList->loan }}</td>
                                             </tr>
+                                            @endif
                                         </table>
                                       </div>
                                 </div>

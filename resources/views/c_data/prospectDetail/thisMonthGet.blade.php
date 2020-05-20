@@ -10,24 +10,24 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($thisMonth as $thisMonth)
-            @if($thisMonth->sales->bf_payment_schedule ==  $year . '-' . $month . '-01' && $thisMonth->sales->ad_payment_schedule ==  $year . '-' . $month . '-01')
+            @foreach($thisMonth as $tm)
+            @if(date('Y-m', strtotime($tm->bfSche)) ==  $year . '-' . $month && date('Y-m', strtotime($tm->adSche)) ==  $year . '-' . $month)
             <tr>
-                <td>{{ $thisMonth['customer_name'] }}</td>
-                <td style="text-align:center;">￥{{ $thisMonth->sales->brokerage_fee }}</td>
-                <td style="text-align:right;">￥{{ $thisMonth->sales->advertising_fee }}</td>
+                <td>{{ $tm['c_name'] }}</td>
+                <td style="text-align:right;">￥{{ number_format($tm->bf) }}</td>
+                <td style="text-align:right;">￥{{ number_format($tm->ad) }}</td>
             </tr>
-            @elseif($thisMonth->sales->bf_payment_schedule ==  $year . '-' . $month . '-01')
+            @elseif(date('Y-m', strtotime($tm->bfSche)) ==  $year . '-' . $month )
             <tr>
-                <td>{{ $thisMonth['customer_name'] }}</td>
-                <td style="text-align:center;">￥{{ $thisMonth->sales->brokerage_fee }}</td>
+                <td>{{ $tm['c_name'] }}</td>
+                <td style="text-align:right;">￥{{ number_format($tm->bf) }}</td>
                 <td style="text-align:right;"></td>
             </tr>
-            @elseif($thisMonth->sales->ad_payment_schedule ==  $year . '-' . $month . '-01')
+            @elseif(date('Y-m', strtotime($tm->adSche)) ==  $year . '-' . $month)
             <tr>
-                <td>{{ $thisMonth['customer_name'] }}</td>
-                <td style="text-align:center;"></td>
-                <td style="text-align:right;">￥{{ $thisMonth->sales->advertising_fee }}</td>
+                <td>{{ $tm['c_name'] }}</td>
+                <td style="text-align:right;"></td>
+                <td style="text-align:right;">￥{{ number_format($tm->ad) }}</td>
             </tr>
             @endif
             @endforeach

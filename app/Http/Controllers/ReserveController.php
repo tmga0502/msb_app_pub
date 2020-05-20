@@ -15,14 +15,24 @@ class ReserveController extends Controller
 
 /*
   |--------------------------------------------------------------------------
-  | マイページ表示
+  | 現時刻
   |--------------------------------------------------------------------------
 */
-    public function getMypage(){
+    public function nowTime(){
         $dt = Carbon::now();
         $year = $dt->year;
         $month = $dt->month;
         $day = $dt->day;
+        return [$dt, $year, $month, $day];
+    }
+
+/*
+  |--------------------------------------------------------------------------
+  | マイページ表示
+  |--------------------------------------------------------------------------
+*/
+    public function getMypage(){
+        list($dt, $year, $month, $day) = $this->nowTime();
         $dates_instance = new Reserve\GetCalendarDates;
         $dates = $dates_instance->getCalendarDates($year,$month);
 
@@ -41,10 +51,8 @@ class ReserveController extends Controller
   |--------------------------------------------------------------------------
 */
     public function getReserveHome(){
-        $dt = Carbon::now();
-        $year = $dt->year;
-        $month = $dt->month;
-        $day = $dt->day;
+        list($dt, $year, $month, $day) = $this->nowTime();
+
         return view('reservation.home',  compact('year', 'month','day'));
     }
 

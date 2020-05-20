@@ -10,7 +10,7 @@
                   <span class="icon-bar"></span><span class="icon-bar"></span>
                   <span class="icon-bar"></span></button>
                   <a id="logo" href="#" class="navbar-brand">
-                  <span class="fa fa-rocket"></span><span class="logo-text">顧客管理</span>
+                  <span class="fa fa-rocket"></span><span class="logo-text">結家アプリ</span>
                   <span style="display: none" class="logo-text-icon">µ</span></a>
               </div>
               <div class="topbar-main">

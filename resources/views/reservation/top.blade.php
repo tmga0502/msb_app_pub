@@ -16,7 +16,7 @@
               <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             </li>
             <li>
-              <a href="{{ route('reservation.home') }}">設備予約home</a>&nbsp;&nbsp;
+              <a href="{{ route('reservation.home') }}">設備予約Home</a>&nbsp;&nbsp;
               <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             </li>
             <li class="active">設備予約一覧</li>

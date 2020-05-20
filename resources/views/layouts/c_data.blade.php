@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>結家　顧客管理</title>
+    <title>結家アプリ</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -27,7 +27,7 @@
     <link type="text/css" rel="stylesheet" href="{{ url('/') }}/css/c_data.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/budget_control.js"></script>
+    <script type="text/javascript" src="{{ url('/') }}/js/c_data.js"></script>
 </head>
 
 <body>

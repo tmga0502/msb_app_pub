@@ -1,5 +1,5 @@
 <div class="panel panel-pink">
-    <div class="panel-heading">見込客</div>
+    <div class="panel-heading">当月見込客</div>
     <div class="panel-body">
         <table class="table table-hover">
           <thead>
@@ -12,9 +12,9 @@
           <tbody>
             @foreach($prospects as $prospect)
             <tr>
-                <td>{{ $prospect['customer_name'] }}</td>
+                <td>{{ $prospect['c_name'] }}</td>
                 <td style="text-align:center;">{{ $prospect['accuracy'] }}</td>
-                <td style="text-align:right;">￥{{ $prospect->sales->brokerage_fee }}</td>
+                <td style="text-align:right;">￥{{ number_format($prospect->plannedSales) }}</td>
             </tr>
             @endforeach
           </tbody>

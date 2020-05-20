@@ -150,7 +150,7 @@
                                         <label for="inputImonth" class="control-label">
                                             紹介年月</label>
                                         <div class="input-icon right">
-                                            <input id="inputImonth" type="date"  class="form-control" name="i_month" />
+                                            <input id="inputImonth" type="month"  class="form-control" name="i_month" />
                                         </div>
                                     </div>
                                   </div>
@@ -161,7 +161,7 @@
                                         <label for="inputPA" class="control-label">
                                             申込予定月</label>
                                         <div class="input-icon right">
-                                            <input id="inputPA" type="date"  class="form-control" name="plannedApply" />
+                                            <input id="inputPA" type="month"  class="form-control" name="plannedApply" />
                                         </div>
                                     </div>
                                   </div>

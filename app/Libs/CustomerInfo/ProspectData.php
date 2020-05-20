@@ -3,7 +3,7 @@
 namespace App\Libs\CustomerInfo;
 
 use Auth;
-use App\CustomerInformation;
+use App\Customers;
 use App\Sales;
 
 class ProspectData{
@@ -17,23 +17,16 @@ class ProspectData{
     //申込全体
     $bf_array = [];
     $ad_array = [];
-    $bf_dis_array = [];
-    $ad_dis_array = [];
     for($i = 0; $i < count($salesList); $i++){
-      $bf_array[] = $salesList[$i]->sales->brokerage_fee;
-      $ad_array[] = $salesList[$i]->sales->advertising_fee;
-      $bf_dis_array[] = $salesList[$i]->sales->discount;
-      $ad_dis_array[] = $salesList[$i]->sales->adOffset;
+      $bf_array[] = $salesList[$i]->planBF;
+      $ad_array[] = $salesList[$i]->planAD;
     }
     //申込み全体
     $bf_sum = array_sum($bf_array);
     $ad_sum = array_sum($ad_array);
-    $bf_dis_sum = array_sum($bf_dis_array);
-    $ad_dis_sum = array_sum($ad_dis_array);
-    $prospect_sum = $bf_sum + $ad_sum - $bf_dis_sum - $ad_dis_sum;
-    return array($bf_sum, $ad_sum, $bf_dis_sum, $ad_dis_sum, $prospect_sum);
+    $prospect_sum = $bf_sum + $ad_sum;
+    return array($bf_sum, $ad_sum, $prospect_sum);
   }
-
   public function otherMonthGet($salesList, $year, $month){
     $bf_array = [];
     $ad_array = [];
@@ -41,14 +34,14 @@ class ProspectData{
     $ad_dis_array = [];
     for($i = 0; $i < count($salesList); $i++){
       //仲手着金予定
-      if($salesList[$i]->sales->bf_payment_schedule == $year . '-' . $month . '-01'){
-        $bf_array[] = $salesList[$i]->sales->brokerage_fee;
-        $bf_dis_array[] =  $salesList[$i]->sales->discount;
+      if(date('Y-m', strtotime($salesList[$i]->bfSche)) == $year . '-' . $month){
+        $bf_array[] = $salesList[$i]->bf;
+        $bf_dis_array[] =  $salesList[$i]->disBF;
       }
         //AD着金予定
-      if($salesList[$i]->sales->ad_payment_schedule == $year . '-' . $month . '-01'){
-        $ad_array[] = $salesList[$i]->sales->advertising_fee;
-        $ad_dis_array[] = $salesList[$i]->sales->adOffset;
+      if(date('Y-m', strtotime($salesList[$i]->adSche)) == $year . '-' . $month){
+        $ad_array[] = $salesList[$i]->ad;
+        $ad_dis_array[] = $salesList[$i]->disAD;
       }
     }
     $bf_sum = array_sum($bf_array);
@@ -61,31 +54,32 @@ class ProspectData{
 
   public function applyGet($year, $month){
     $userID = Auth::user()->id;
-    $salesList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('status', '=', '申込')->get();
-    $nextYear = 0;
-    $nextMonth = 0;
+    $applyList = Customers::where('user_id', '=', $userID)->where('statues', '=', '申込')->get();
+    $salesList = Customers::where('user_id', '=', $userID)->where('statues', '=', '審査通過')->orWhere('statues', '=', '契約締結(完了)')->get();
     if($month == 12){
       $nextYear = $year + 1;
-      $nextMonth = 1;
+      $nextMonth = '01';
     }else{
       $nextYear = $year;
-      $nextMonth = $month + 1;
+      if($month < 10){
+        $nextMonth = '0' . strval($month + 1);
+      }else{
+        $nextMonth = $month + 1;
+      }
     }
 
     //申込み全体
-    list($b_fee_sum, $ad_fee_sum, $b_discount_sum, $ad_discount_sum, $prospect_sum) = $this->salesGet($salesList);
+    list($b_fee_sum, $ad_fee_sum, $prospect_sum) = $this->salesGet($applyList);
 
     //当月着金予定
     list($b_fee_sum_thisMonth, $ad_fee_sum_thisMonth, $b_discount_sum_thisMonth, $ad_discount_sum_thisMonth, $prospect_sum_thisMonth) = $this->otherMonthGet($salesList, $year, $month);
 
     //翌月着金予定
     list($b_fee_sum_nextMonth, $ad_fee_sum_nextMonth, $b_discount_sum_nextMonth, $ad_discount_sum_nextMonth, $prospect_sum_nextMonth) = $this->otherMonthGet($salesList, $nextYear, $nextMonth);
-
+    // dd($ad_discount_sum_nextMonth);
     $contexts = array(
     'b_fee_sum' => $b_fee_sum,
     'ad_fee_sum' => $ad_fee_sum,
-    'b_discount_sum' => $b_discount_sum,
-    'ad_discount_sum' => $ad_discount_sum,
     'prospect_sum' => $prospect_sum,
     'b_fee_sum_thisMonth' => $b_fee_sum_thisMonth,
     'ad_fee_sum_thisMonth' => $ad_fee_sum_thisMonth,
@@ -114,7 +108,7 @@ class ProspectData{
 
     for($i = 0; $i < count($salesList); $i++){
       if($salesList[$i]->accuracy == $accuracy){
-        $array[] = $salesList[$i]->sales->brokerage_fee;
+        $array[] = $salesList[$i]->plannedSales;
       }
     }
     $array_sum = array_sum($array);
@@ -125,7 +119,7 @@ class ProspectData{
 
   public function accuracyGet(){
     $userID = Auth::user()->id;
-    $salesList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('status', '=', '---')->get();
+    $salesList = Customers::where('user_id', '=', $userID)->where('statues', '=', '---')->get();
     $A = 'A';
     $B = 'B';
     $C = 'C';
@@ -161,7 +155,7 @@ class ProspectData{
 */
   public function prospectGet($year, $month){
     $userID = Auth::user()->id;
-    $saleseList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('apply', '=', $year . '-' . $month . '-01')->where('status', '=', '---')->get();
+    $saleseList = Customers::where('user_id', '=', $userID)->whereYear('plannedApply', '=', $year )->whereMonth('plannedApply', '=', $month )->where('statues', '=', '---')->get();
     return $saleseList;
   }
 
@@ -173,7 +167,7 @@ class ProspectData{
 */
   public function applyPeplesGet(){
     $userID = Auth::user()->id;
-    $saleseList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('status', '=', '申込')->get();
+    $saleseList = Customers::where('user_id', '=', $userID)->where('statues', '=', '申込')->get();
     return $saleseList;
   }
 
@@ -185,38 +179,40 @@ class ProspectData{
 */
   public function thisMonthGet($year, $month){
     $userID = Auth::user()->id;
-    $saleseList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('status', '=', '申込')->orWhere('status', '=', '審査通過')->orWhere('status', '=', '契約締結')->orWhere('status', '=', '完了')->get();
- // dd($salesListArray);
+    $saleseList = Customers::where('user_id', '=', $userID)->Where('statues', '=', '審査通過')->orWhere('statues', '=', '契約締結(完了)')->get();
+//  dd($saleseList);
     return $saleseList;
   }
 
 
 /*
   |--------------------------------------------------------------------------
-  | 【当月着金予定】and【翌月着金予定】用Method
+  | 【翌月着金予定】用Method
   |--------------------------------------------------------------------------
 */
   public function nextMonthGet($year, $month){
     $userID = Auth::user()->id;
     if($month == 12){
     $newYear = $year + 1;
-    $newMonth = 1;
+    $newMonth = '01';
     }else{
     $newYear = $year;
     $newMonth = $month + 1;
     }
+    if($newMonth < 10){
+        $newMonth = '0' . $newMonth;
+    }
     $salesListArray = [];
-    $saleseList = CustomerInformation::with('sales')->where('user_id', '=', $userID)->where('status', '=', '申込')->orWhere('status', '=', '審査通過')->orWhere('status', '=', '契約締結')->orWhere('status', '=', '完了')->get();
+    $saleseList = Customers::where('user_id', '=', $userID)->orWhere('statues', '=', '審査通過')->orWhere('statues', '=', '契約締結(完了)')->get();
 
     for($i = 0; $i < count($saleseList); $i++){
-      if($saleseList[$i]->sales->bf_payment_schedule == $newYear . '-' . $newMonth . '-01'){
+      if(date('Y-m', strtotime($saleseList[$i]->bfSche)) ==  $newYear . '-' . $newMonth){
         $salesListArray[] = $saleseList[$i];
       }
-      if($saleseList[$i]->sales->ad_payment_schedule == $newYear . '-' . $newMonth . '-01'){
+      if(date('Y-m', strtotime($saleseList[$i]->adSche)) ==  $newYear . '-' . $newMonth){
         $salesListArray[] = $saleseList[$i];
       }
     }
-    // dd($salesListArray);
 
     return $salesListArray;
   }

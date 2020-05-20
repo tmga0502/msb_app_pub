@@ -6,7 +6,7 @@
           <a class="navbar-brand">検索</a>
         </div>
         <div id="bs-example-navbar-collapse-2" class="collapse navbar-collapse">
-            <form action="{{ route('c_data.prospect_search') }}" method="POST" role="search" class="navbar-form navbar-left">
+            <form action="{{ route('c_data.prospectDisp') }}" method="POST" role="search" class="navbar-form navbar-left">
               @csrf
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <div class="form-group">
@@ -15,9 +15,9 @@
 
               </div>
               &nbsp;
-              <button type="submit" name="serch" class="btn btn-blue">表示</button>
+              <button type="submit" name="btn" class="btn btn-blue" value="1">表示</button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="submit" name="clear" class="btn btn-blue">クリア</button>
+              <button type="submit" name="btn" class="btn btn-blue" value="0">クリア</button>
             </form>
         </div>
       </div>

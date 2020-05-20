@@ -36,21 +36,16 @@
                                   <div class="navbar-header">
                                       <a class="navbar-brand">検索</a></div>
                                   <div id="bs-example-navbar-collapse-2" class="collapse navbar-collapse">
-                                      <form action="" method="POST" role="search" class="navbar-form navbar-left">
+                                      <form action="{{ route('c_data.cListSearch') }}" method="POST" role="search" class="navbar-form navbar-left">
                                         @csrf
                                         <div class="form-group">
                                         お客様名：
+                                        <input type="text" class="form-control" name="cName">
                                         </div>
-                                        &nbsp;
-                                        <button type="submit" name='c_name' class="btn btn-blue">検索</button>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <div class="form-group">
-                                        申込み予定：
-                                        </div>
-                                        &nbsp;
-                                        <button type="submit" name="apply" class="btn btn-blue">検索</button>
+                                        <button type="submit" name="searchBtn" value="cDataSearch" class="btn btn-blue">検索</button>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="submit" name="clear" class="btn btn-blue">クリア</button>
+                                        <button type="submit" name="searchBtn" value="cDataclear" class="btn btn-blue">クリア</button>
                                       </form>
                                   </div>
                               </div>
@@ -84,7 +79,7 @@
                                                 <a href="{{ route('c_data.c_detail', ['id' => $cl['id'] ]) }}" class="list_td">{{ $cl['c_name'] }}</a>
                                               </td>
                                               <td>
-                                                <a href="{{ route('c_data.c_detail', ['id' => $cl['id'] ]) }}"  class="list_td">{{ $cl['status'] }}</a>
+                                                <a href="{{ route('c_data.c_detail', ['id' => $cl['id'] ]) }}"  class="list_td">{{ $cl['statues'] }}</a>
                                               </td>
                                               <td>
                                               @if(isset($cl['plannedApply']))

@@ -12,8 +12,11 @@
                 <div class="page-title"> Dashboard</div>
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
-                <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('c_data.top') }}">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                <li class="active"><a href="{{ route('c_data.top') }}">Dashboard</a></li>
+              <li>
+                <a href="{{ route('getTop') }}">TOP</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+              </li>
+              <li class="active">顧客管理表Home</li>
             </ol>
             <div class="clearfix">
             </div>
@@ -23,9 +26,9 @@
         <div class="page-content">
             <div id="tab-general">
                 <div id="sum_box" class="row mbl">
-                  <div class="col-lg-12">
+                  <div class="col-md-12">
                     <div class="row">
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                           <div class="panel profit db mbm">
                               <div class="panel-body">
                                   <p class="icon">
@@ -44,7 +47,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                           <div class="panel income db mbm">
                               <div class="panel-body">
                                   <p class="icon">
@@ -63,7 +66,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                           <div class="panel income db mbm">
                               <div class="panel-body">
                                   <p class="icon">
@@ -82,7 +85,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                           <div class="panel income db mbm">
                               <div class="panel-body">
                                   <p class="icon">
@@ -102,10 +105,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-12">
+                  <div class="col-md-12">
                     <div class="row">
                       <!-- Todoリスト -->
-                        <div class="col-lg-8">
+                        <div class="col-md-8">
                             <div class="portlet box">
                                 <div class="portlet-header" style="background-color:lightcoral;">
                                     <div class="caption" style="color:white;">Todo List</div>
@@ -143,7 +146,7 @@
                             </div>
                         </div>
                       <!-- 解約3ヶ月前 -->
-                        <div class="col-lg-4">
+                        <div class="col-md-4">
                           <div class="portlet box">
                               <div class="portlet-header" style="background-color:lawngreen;">
                                   <div class="caption" style="color:white;">解約3ヶ月前</div>

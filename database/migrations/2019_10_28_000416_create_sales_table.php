@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('customer_information_id');//foreignKye
+            $table->unsignedBigInteger('c_id');//foreignKye
             $table->integer('brokerage_fee')->default(0);//仲手
             $table->integer('advertising_fee')->default(0);//AD
             $table->integer('discount')->default(0);//割引
@@ -28,12 +28,6 @@ class CreateSalesTable extends Migration
             $table->integer('ad_payment_amount')->default(0);//AD入金額
             $table->date('ad_payment')->nullable()->default(null);//AD入金
             $table->timestamps();
-
-            $table
-              ->foreign('customer_information_id')
-              ->references('id')
-              ->on('customer_information')
-              ->onDelete('cascade');
         });
     }
 

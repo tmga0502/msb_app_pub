@@ -198,6 +198,8 @@ class UserController extends Controller
             if(Auth::attempt(['loginID' => $request->input('loginID'), 'password' => $request->input('password')])){
                 //セッションに今日の日付を入れる
                 session()->put(['year' => $year, 'month' => $month, 'day' => $day]);
+                //セッションに顧客情報検索用keyを入れる
+                session()->put(['cDataName' => '']);
                 //管理者ログイン
                 return redirect()->route('getTop');
             }

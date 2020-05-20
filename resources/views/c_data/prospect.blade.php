@@ -33,25 +33,25 @@
                      @include('c_data.prospectDetail.searchNav')
                     <!-- END検索ナビ -->
                     <!-- next_month -->
-                    <div class="col-lg-12">
-                      <div class="col-lg-7">
+                    <div class="row">
+                      <div class="col-md-8">
                         @include('c_data.prospectDetail.applyGet')
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-md-4">
                         @include('c_data.prospectDetail.accuracyGet')
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div class="col-lg-3">
+                    <div class="row">
+                      <div class="col-md-3">
                         @include('c_data.prospectDetail.prospectGet')
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                         @include('c_data.prospectDetail.applyPeplesGet')
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                         @include('c_data.prospectDetail.thisMonthGet')
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-md-3">
                         @include('c_data.prospectDetail.nextMonthGet')
                       </div>
                     </div>

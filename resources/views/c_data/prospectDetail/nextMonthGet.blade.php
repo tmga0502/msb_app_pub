@@ -10,24 +10,24 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($nextMonth as $nextMonth)
-            @if($nextMonth->sales->bf_payment_schedule ==  $newYear . '-' . $newMonth . '-01' && $nextMonth->sales->ad_payment_schedule ==  $newYear . '-' . $newMonth . '-01')
+            @foreach($nextMonth as $nm)
+            @if(date('Y-m', strtotime($nm->bfSche)) ==  $newYear . '-' . $newMonth && date('Y-m', strtotime($nm->adSche)) ==  $newYear . '-' . $newMonth)
             <tr>
-                <td>{{ $nextMonth['customer_name'] }}</td>
-                <td style="text-align:center;">￥{{ $nextMonth->sales->brokerage_fee }}</td>
-                <td style="text-align:right;">￥{{ $nextMonth->sales->advertising_fee }}</td>
+                <td>{{ $nm['c_name'] }}</td>
+                <td style="text-align:center;">￥{{ number_format($nm->bf) }}</td>
+                <td style="text-align:right;">￥{{ number_format($nm->ad) }}</td>
             </tr>
-            @elseif($nextMonth->sales->bf_payment_schedule ==  $newYear . '-' . $newMonth . '-01')
+            @elseif(date('Y-m', strtotime($nm->bfSche)) ==  $newYear . '-' . $newMonth)
             <tr>
-                <td>{{ $nextMonth['customer_name'] }}</td>
-                <td style="text-align:center;">￥{{ $nextMonth->sales->brokerage_fee }}</td>
+                <td>{{ $nm['c_name'] }}</td>
+                <td style="text-align:center;">￥{{ number_format($nm->bf) }}</td>
                 <td style="text-align:right;"></td>
             </tr>
-            @elseif($nextMonth->sales->ad_payment_schedule ==  $newYear . '-' . $newMonth . '-01')
+            @elseif(date('Y-m', strtotime($nm->adSche)) ==  $newYear . '-' . $newMonth)
             <tr>
-                <td>{{ $nextMonth['customer_name'] }}</td>
+                <td>{{ $nm['c_name'] }}</td>
                 <td style="text-align:center;"></td>
-                <td style="text-align:right;">￥{{ $nextMonth->sales->advertising_fee }}</td>
+                <td style="text-align:right;">￥{{ number_format($nm->ad) }}</td>
             </tr>
             @endif
             @endforeach

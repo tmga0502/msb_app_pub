@@ -374,41 +374,64 @@ Route::post('/profile/budgets/update',[
   'as' => 'c_data.c_list'
   ]);
 
+  // 顧客一覧->検索
+  Route::post('/customer_list/search',[
+  'uses' => 'CustomerController@cListSearch',
+  'as' => 'c_data.cListSearch'
+  ]);
+
   // 顧客詳細表示
   Route::get('/customer_list/{id}',[
   'uses' => 'CustomerController@getCustomerDetail',
   'as' => 'c_data.c_detail'
   ]);
 
-  // 顧客詳細編集ページ表示
-  Route::get('/customer_list/{id}/edit',[
-  'uses' => 'CustomerController@getCustomerDetailEdit',
-  'as' => 'c_data.edit'
-  ]);
+  // 顧客詳細編集ページ
+  // 基本情報
+    Route::get('/customer_list/{id}/editBase',[
+    'uses' => 'CustomerController@getCustomerDetailEditBase',
+    'as' => 'c_data.editBase'
+    ]);
+  // 進捗・売上
+    Route::get('/customer_list/{id}/editSales',[
+    'uses' => 'CustomerController@getCustomerDetailEditSales',
+    'as' => 'c_data.editSales'
+    ]);
+  // 物件情報
+    Route::get('/customer_list/{id}/editProperty',[
+    'uses' => 'CustomerController@getCustomerDetailEditProperty',
+    'as' => 'c_data.editProperty'
+    ]);
+  // その他
+    Route::get('/customer_list/{id}/editOther',[
+    'uses' => 'CustomerController@getCustomerDetailEditOther',
+    'as' => 'c_data.editOther'
+    ]);
 
-  // 顧客詳細表示->顧客情報更新
-  Route::post('/customer_list/c_info',[
-  'uses' => 'CustomerController@c_infoUpdate',
-  'as' => 'c_info_update'
-  ]);
+  // 顧客詳細更新
+  // 基本情報
+    Route::post('/customer_list/c_info',[
+    'uses' => 'CustomerController@c_infoUpdate',
+    'as' => 'c_info_update'
+    ]);
 
-  // 顧客詳細表示->売上更新
-  Route::post('/customer_list/sales',[
-  'uses' => 'SalesController@salesUpdate',
-  'as' => 'sales_update'
-  ]);
+  // 売上情報
+    Route::post('/customer_list/sales',[
+    'uses' => 'CustomerController@salesUpdate',
+    'as' => 'sales_update'
+    ]);
 
-  // 顧客詳細表示->物件情報更新
-  Route::post('/customer_list/propertyInformation',[
-  'uses' => 'PropertyInformationController@propertyInformationUpdate',
-  'as' => 'propertyInformation_update'
-  ]);
+  // 物件情報
+    Route::post('/customer_list/propertyInformation',[
+    'uses' => 'CustomerController@propertyInformationUpdate',
+    'as' => 'propertyInformation_update'
+    ]);
 
-  // 顧客詳細表示->審査後フロー更新
-  Route::post('/customer_list/flow',[
-  'uses' => 'FlowController@flowUpdate',
-  'as' => 'flow_update'
-  ]);
+  // その他情報
+    Route::post('/customer_list/other',[
+    'uses' => 'CustomerController@otherUpdate',
+    'as' => 'other_update'
+    ]);
 
   // 顧客詳細表示->詳細情報更新
   Route::post('/customer_list/details',[
@@ -417,15 +440,21 @@ Route::post('/profile/budgets/update',[
   ]);
 
   // 見込み管理表示
-  Route::get('/c_data_prospect/{yer}/{month}',[
+  Route::get('/c_data_prospect',[
   'uses' => 'CustomerController@getProspect',
   'as' => 'c_data.prospect'
   ]);
 
-  // 見込み管理->検索
+ // 見込み管理->検索
   Route::post('/c_data_prospect/search',[
-  'uses' => 'CustomerController@postProspect',
-  'as' => 'c_data.prospect_search'
+  'uses' => 'CustomerController@prospectDisp',
+  'as' => 'c_data.prospectDisp'
+  ]);
+
+  // 紹介管理表示
+  Route::get('/introduction',[
+  'uses' => 'CustomerController@getIntroduction',
+  'as' => 'c_data.introduction'
   ]);
 
   // 予実管理ページ表示

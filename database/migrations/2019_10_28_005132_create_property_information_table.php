@@ -15,7 +15,7 @@ class CreatePropertyInformationTable extends Migration
     {
         Schema::create('property_information', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('customer_information_id');//foreignKye
+            $table->unsignedBigInteger('c_id');//foreignKye
             $table->string('apartment_name', 100)->default('');//物件名
             $table->string('room_number', 20)->default('');//部屋番号
             $table->unsignedInteger('first_code')->default(0);//郵便番号1
@@ -31,11 +31,6 @@ class CreatePropertyInformationTable extends Migration
             $table->date('contract_end')->nullable()->default(null);//解約
             $table->timestamps();
 
-            $table
-              ->foreign('customer_information_id')
-              ->references('id')
-              ->on('customer_information')
-              ->onDelete('cascade');
         });
     }
 

@@ -15,27 +15,27 @@
           <tbody>
             <tr>
               <td><span class="label label-sm label-success">申込合計</span></td>
-              <td style="text-align:right;">￥{{ $applications['b_fee_sum'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['b_discount_sum'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['ad_fee_sum'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['ad_discount_sum'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['prospect_sum'] }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['b_fee_sum']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">ー</td>
+              <td style="text-align:right;">￥{{ number_format($applications['ad_fee_sum']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">ー</td>
+              <td style="text-align:right;">￥{{ number_format($applications['prospect_sum']) }}</td>
             </tr>
             <tr>
               <td><span class="label label-sm label-warning">当月着金</span></td>
-              <td style="text-align:right;">￥{{ $applications['b_fee_sum_thisMonth'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['b_discount_sum_thisMonth'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['ad_fee_sum_thisMonth'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['ad_discount_sum_thisMonth'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['prospect_sum_thisMonth'] }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['b_fee_sum_thisMonth']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">￥{{ number_format($applications['b_discount_sum_thisMonth']) }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['ad_fee_sum_thisMonth']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">￥{{ number_format($applications['ad_discount_sum_thisMonth']) }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['prospect_sum_thisMonth']) }}</td>
             </tr>
             <tr>
               <td><span class="label label-sm label-default">翌月着金</span></td>
-              <td style="text-align:right;">￥{{ $applications['b_fee_sum_nextMonth'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['b_discount_sum_nextMonth'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['ad_fee_sum_nextMonth'] }}</td>
-              <td style="text-align:right;color:red;font-size:x-small;">￥{{ $applications['ad_discount_sum_nextMonth'] }}</td>
-              <td style="text-align:right;">￥{{ $applications['prospect_sum_nextMonth'] }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['b_fee_sum_nextMonth']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">￥{{ number_format($applications['b_discount_sum_nextMonth']) }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['ad_fee_sum_nextMonth']) }}</td>
+              <td style="text-align:right;color:red;font-size:x-small;">￥{{ number_format($applications['ad_discount_sum_nextMonth']) }}</td>
+              <td style="text-align:right;">￥{{ number_format($applications['prospect_sum_nextMonth']) }}</td>
             </tr>
           </tbody>
         </table>

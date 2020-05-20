@@ -51,7 +51,7 @@
                       </thead>
                       <tbody style="text-align:center">
                           @foreach($userSchedule as $us)
-                          <tr class="active">
+                          <tr>
                             <td class="col-sm-2">{{ $us['date'] }}</td>
                             <td class="col-sm-1">{{ substr($us['start_time'], 0, 5) }}</td>
                             <td class="col-sm-1">{{ substr($us['end_time'], 0, 5) }}</td>

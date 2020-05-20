@@ -46,12 +46,12 @@
 
                 <!-- 見込管理ページ -->
                 @if (  Request::decodedPath() == 'c_data_prospect' )
-                <li class="active"><a href="{{ route('c_data.prospect', ['year' => $year, 'month' => $month] ) }}"><i class="fa fa-th-list fa-fw">
+                <li class="active"><a href="{{ route('c_data.prospect' ) }}"><i class="fa fa-th-list fa-fw">
                       <div class="icon-bg bg-violet"></div>
                   </i><span class="menu-title">見込管理</span></a>
                 </li>
                 @else
-                <li><a href="{{ route('c_data.prospect' ,['year' => $year, 'month' => $month]) }}"><i class="fa fa-th-list fa-fw">
+                <li><a href="{{ route('c_data.prospect') }}"><i class="fa fa-th-list fa-fw">
                       <div class="icon-bg bg-violet"></div>
                   </i><span class="menu-title">見込管理</span></a>
                 </li>
@@ -60,10 +60,17 @@
 
 
                 <!-- 紹介管理ページ -->
-                <li><a href="#"><i class="fa fa-user fa-fw">
-                      <div class="icon-bg bg-red"></div>
+                 @if (  Request::decodedPath() == 'introduction' )
+                <li class="active"><a href="{{ route('c_data.introduction' ) }}"><i class="fa fa-th-list fa-fw">
+                      <div class="icon-bg bg-violet"></div>
                   </i><span class="menu-title">紹介管理</span></a>
                 </li>
+                @else
+                <li><a href="{{ route('c_data.introduction') }}"><i class="fa fa-th-list fa-fw">
+                      <div class="icon-bg bg-violet"></div>
+                  </i><span class="menu-title">紹介管理</span></a>
+                </li>
+                @endif
                 <!-- END 紹介管理ページ -->
 
                 <!-- 予実管理ページ -->
@@ -80,26 +87,7 @@
                 @endif
                 <!-- END 予実管理ページ -->
 
-                <!-- 入金管理ページ --><!-- 
-                <li><a href="#"><i class="fa fa-cny fa-fw">
-                      <div class="icon-bg bg-red"></div>
-                  </i><span class="menu-title">入金管理</span></a>
-                </li> -->
-                <!-- END 入金管理ページ -->
 
-                <!-- 設備予約へ -->
-                <li><a href="{{ route('reservation.mypage') }}"><i class="fa fa-calendar fa-fw">
-                      <div class="icon-bg bg-red"></div>
-                  </i><span class="menu-title">設備予約へ</span></a>
-                </li>
-                <!-- END 設備予約へ -->
-
-                <!-- 業務ツールへ -->
-                <li><a href="#"><i class="fa fa-database fa-fw">
-                      <div class="icon-bg bg-red"></div>
-                  </i><span class="menu-title">業務ツールへ</span></a>
-                </li>
-                <!-- END 業務ツールへ -->
 
             </ul>
         </div>

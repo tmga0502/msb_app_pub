@@ -12,9 +12,9 @@
           <tbody>
             @foreach($applies as $apply)
             <tr>
-                <td>{{ $apply['customer_name'] }}</td>
-                <td style="text-align:center;">￥{{ $apply->sales->brokerage_fee }}</td>
-                <td style="text-align:right;">￥{{ $apply->sales->advertising_fee }}</td>
+                <td>{{ $apply['c_name'] }}</td>
+                <td style="text-align:right;">￥{{ number_format($apply->planBF) }}</td>
+                <td style="text-align:right;">￥{{ number_format($apply->planAD) }}</td>
             </tr>
             @endforeach
           </tbody>

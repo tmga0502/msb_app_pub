@@ -36,12 +36,19 @@ class Customers extends Model
     'contacter_relation',
     'plannedSales',
     'expectedPayment',
+    'planBF',
+    'bfSche',
     'bf',
     'bfDate',
+    'planAD',
+    'adSche',
     'ad',
     'adDate',
+    'outsource',
+    'osDate',
     'disBF',
     'disAD',
+    'introFee',
     'useType',
     'zipcode',
     'address',
@@ -69,4 +76,5 @@ class Customers extends Model
     'd_address',
     'd_mansion_name'
     ];
+
 }
