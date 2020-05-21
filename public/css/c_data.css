@@ -64,5 +64,11 @@
 }
 
 .bgRight {
-  text-align:right;
+  text-align: right;
+}
+
+/* rowの高さを揃える */
+.row-height {
+  display: flex;
+  flex-wrap: wrap;
 }

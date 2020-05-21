@@ -49,37 +49,10 @@ class UserController extends Controller
 
 /*
 |--------------------------------------------------------------------------
-| 雇用形態別Top
+| Topページ表示
 |--------------------------------------------------------------------------
 */
-    //業務委託トップ
-    public function getAgentTop(){
-        $dt = Carbon::now();
-        $year = $dt->year;
-        $month = $dt->month;
-        $day = $dt->day;
-        return view('Top.agent', compact('year', 'month', 'day'));
-    }
-
-    //正社員トップ
-    public function getEmployeeTop(){
-        $dt = Carbon::now();
-        $year = $dt->year;
-        $month = $dt->month;
-        $day = $dt->day;
-        return view('Top.employee', compact('year', 'month', 'day'));
-    }
-
-    //管理者トップ
-    public function getManagerTop(){
-        $dt = Carbon::now();
-        $year = $dt->year;
-        $month = $dt->month;
-        $day = $dt->day;
-        return view('Top.manager', compact('year', 'month', 'day'));
-    }
-
-    //管理者トップ
+    //トップページ
     public function getTop(){
         $dt = Carbon::now();
         $year = $dt->year;
@@ -88,6 +61,15 @@ class UserController extends Controller
         return view('Top.top', compact('year', 'month', 'day'));
     }
 
+/*
+  |--------------------------------------------------------------------------
+  | サブページ表示
+  |--------------------------------------------------------------------------
+*/
+    // 顧客管理ページ
+    public function getCdata(){
+        return view('Top.c_data');
+    }
 
 /*
 |--------------------------------------------------------------------------

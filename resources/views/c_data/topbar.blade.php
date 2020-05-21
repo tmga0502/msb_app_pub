@@ -15,7 +15,6 @@
               </div>
               <div class="topbar-main">
                 <a id="menu-toggle" href="#" class="hidden-xs">
-                <i class="fa fa-bars"></i>
                 </a>
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
                   <li class="dropdown topbar-user">
@@ -23,8 +22,6 @@
                   <span class="hidden-xs">{{ Auth::user()->name }}</span>&nbsp;
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-user pull-right">
-                  <li><a href="{{ route('c_data.profile') }}"><i class="fa fa-user"></i>設定</a></li>
-                  <li class="divider"></li>
                   <li><a href="{{ route('user.logout') }}"><i class="fa fa-key"></i>ログアウト</a></li>
                 </ul>
                 </li>

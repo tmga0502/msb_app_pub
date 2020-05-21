@@ -20,8 +20,6 @@
                   <span class="hidden-xs">{{ Auth::user()->name }}</span>&nbsp;
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-user pull-right">
-                  <li><a href="#"><i class="fa fa-user"></i>プロフィール</a></li>
-                  <li class="divider"></li>
                   <li><a href="{{ route('user.logout') }}"><i class="fa fa-key"></i>ログアウト</a></li>
                 </ul>
                 </li>

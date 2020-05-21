@@ -34,14 +34,14 @@
                     <div class="row">
                         <div class="col-md-4 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/list.png" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/list.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="{{ route('reservation.top', ['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
                                 <h5 class="text-center text-info">予約状況一覧</h5>
                             </div>
                         </div>
                         <div class="col-md-4 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/new.png" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/new.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="{{ route('reservation.create', ['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
                                 <h5 class="text-center text-info">新規作成</h5>
                             </div>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-4 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/mypage.png" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/mypage.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="{{ route('reservation.mypage') }}"></a>
                                 <h5 class="text-center text-info">マイページ</h5>
                             </div>

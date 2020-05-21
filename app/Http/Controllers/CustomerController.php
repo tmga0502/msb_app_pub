@@ -164,7 +164,7 @@ class CustomerController extends Controller
         'plannedApply' => $plannedApply
         ]);
 
-        return redirect()->route('c_data.top') ;
+        return redirect()->route('getCdata') ;
 
     }
 

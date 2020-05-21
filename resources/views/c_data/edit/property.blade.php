@@ -4,17 +4,20 @@
 
   <div id="wrapper">
     <!--BEGIN PAGE WRAPPER-->
-    @include('c_data.side_menu')
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="margin:0">
     <!--BEGIN TITLE & BREADCRUMB PAGE-->
     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
             <div class="page-header pull-left">
-                <div class="page-title">【 {{ $cList->c_name }} 様】編集</div>
+                <div class="page-title">【物件/その他】編集</div>
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
-                <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('c_data.top') }}">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('getTop') }}">Home</a>&nbsp;&nbsp;<i
+                class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                <li>&nbsp;<a href="{{ route('getCdata') }}">顧客管理TOP</a>&nbsp;&nbsp;<i
+                class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                 <li class="active"><a href="{{ route('c_data.c_list') }}">顧客一覧</a><i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                <li class="active">【 {{ $cList->c_name }} 様】編集</li>
+                <li class="active"><a href="{{ route('c_data.c_detail', ['id'=>  $cList->id]) }}">【 {{ $cList->c_name }} 様】詳細</a><i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                <li class="active">【物件/その他】編集</li>
             </ol>
             <div class="clearfix">
             </div>

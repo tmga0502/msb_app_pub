@@ -3,17 +3,17 @@
 @section('content')
 
 <div id="wrapper">
-    @include('c_data.side_menu')
     <!--BEGIN PAGE WRAPPER-->
-    <div id="page-wrapper">
+    <div id="page-wrapper"  style="margin:0">
         <!--BEGIN TITLE & BREADCRUMB PAGE-->
         <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
             <div class="page-header pull-left">
                 <div class="page-title">顧客一覧</div>
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
-                <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('c_data.top') }}">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                <li class="active"><a href="{{ route('c_data.c_list') }}">顧客一覧</a></li>
+              <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('getTop') }}">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+              <li><a href="{{ route('getCdata') }}">顧客管理TOP</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+              <li class="active">顧客一覧</a></li>
             </ol>
             <div class="clearfix">
             </div>
@@ -68,7 +68,6 @@
                                             <th class="col-md-1">申込予定</th>
                                             <th class="col-md-2">紹介者名</th>
                                             <th class="col-md-4">備考</th>
-                                            <th class="col-md-1" style="text-align:center;">検索条件</th>
                                             <th id='del_th' style="display:none;text-align:center;">削除</th>
                                         </tr>
                                         </thead>
@@ -93,11 +92,6 @@
                                               </td>
                                               <td>
                                                 <a href="{{ route('c_data.c_detail', ['id' => $cl['id'] ]) }}" class="list_td">{{ $cl['progress'] }}</a>
-                                              </td>
-                                              <td>
-                                                <a href="{{ route('c_data.c_detail', ['id' => $cl['id'] ]) }}">
-                                                    <button type="submit" name="condition" class="btn btn-yellow btn-xs" style="width:100%;">表示or登録</button>
-                                                </a>
                                               </td>
                                               <td class='del_td' style="display:none">
                                                 <form action='' method='post'>
@@ -131,8 +125,6 @@
     <!--END CONTENT-->
 </div>
 <!--END PAGE WRAPPER-->
-</div>
-</div>
 
 <script>
   document.getElementById("delbt").onclick = function() {

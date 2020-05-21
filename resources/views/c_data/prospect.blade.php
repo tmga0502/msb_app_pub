@@ -3,17 +3,19 @@
 @section('content')
 
 <div id="wrapper">
-   @include('c_data.side_menu')
     <!--BEGIN PAGE WRAPPER-->
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="margin:0">
         <!--BEGIN TITLE & BREADCRUMB PAGE-->
         <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
             <div class="page-header pull-left">
                 <div class="page-title">売上管理</div>
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
-                <li><i class="fa fa-home"></i>&nbsp;<a href="<!-- url 'c_data:user_detail' pk=user.id --> ">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                <li class="active"><a href="<!-- url 'c_data:prospect' pk=user.id -->">売上管理</a></li>
+                <li><i class="fa fa-home"></i>&nbsp;<a href="{{ route('getTop') }}">Home</a>&nbsp;&nbsp;<i
+                class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                <li><a href="{{ route('getCdata') }}">顧客管理TOP</a>&nbsp;&nbsp;<i
+                class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                <li class="active">売上管理</a></li>
             </ol>
             <div class="clearfix">
             </div>
