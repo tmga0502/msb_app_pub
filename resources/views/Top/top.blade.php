@@ -28,14 +28,19 @@
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/calendar.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="{{ route('reservation.home') }}"></a>
-                                <h5 class="text-center text-info">設備予約</h5>
+                                <h5 class="text-center text-info"><br>設備予約</h5>
                             </div>
                         </div>
-                        <div class="col-md-4 col-md-offset-1">
+                        <div class="col-md-4 col-md-offset-1" >
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/commission.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                @if (Auth::user()->superUser == 1)
                                 <a href="{{ route('commissions.com_top',['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
-                                <h5 class="text-center text-info">コミッション請求書作成</h5>
+                                <h5 class="text-center text-info"><br>コミッション請求書作成</h5>
+                                @else
+                                <a href="#"></a>
+                                <h5 class="text-center text-info">【利用不可】<br><s>コミッション請求書作成</s></h5>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -48,22 +53,32 @@
                         <div class="col-md-4 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/customer.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                @if (Auth::user()->superUser == 1)
                                 <a href="{{ route('getCdata') }}"></a>
-                                <h5 class="text-center text-info">顧客管理</h5>
+                                <h5 class="text-center text-info"><br>顧客管理</h5>
+                                @else
+                                <a href="{{ route('getCdata') }}"></a>
+                                <h5 class="text-center text-info">【利用不可】<br><s>顧客管理</s></h5>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-4 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/pm.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                @if (Auth::user()->superUser == 1)
                                 <a href="{{ route('pm.top',['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
-                                <h5 class="text-center text-info">物件管理</h5>
+                                <h5 class="text-center text-info"><br>物件管理</h5>
+                                @else
+                                <a href="{{ route('pm.top',['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
+                                <h5 class="text-center text-info">【利用不可】<br><s>物件管理</s></h5>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
               </div>
 
-              <div class="row row-eq-height">
+              <div class="row row-eq-height" @if (Auth::user()->superUser == 0) hidden @endif>
                 <div class="col-md-8 col-md-offset-2">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-1">
@@ -84,7 +99,7 @@
                 </div>
               </div>
 
-              <div class="row row-eq-height">
+              <div class="row row-eq-height"  @if (Auth::user()->superUser == 0) hidden @endif>
                 <div class="col-md-8 col-md-offset-2">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-1">
