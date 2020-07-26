@@ -3,7 +3,6 @@
 @section('content')
 
   <div id="wrapper">
-    @include('root.side_menu_signup')
     <!--BEGIN PAGE WRAPPER-->
     <div id="page-wrapper">
     <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -91,6 +90,23 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 雇用形態2 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <span style="color:red;">※</span>雇用形態2</label>
+                            <div class="input-icon right">
+                              <select name="contract_type2" class="form-control">
+                                <option value=5 @if(old('contract_type')==5) selected  @endif>なし</option>
+                                <option value=0 @if(old('contract_type')==0) selected  @endif>業務委託</option>
+                                <option value=1 @if(old('contract_type')==1) selected  @endif>正社員</option>
+                                <option value=2 @if(old('contract_type')==2) selected  @endif>アルバイト・パート</option>
+                                <option value=3 @if(old('contract_type')==3) selected  @endif>役員</option>
+                                <option value=4 @if(old('contract_type')==4) selected  @endif>その他</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 管理者権限 -->
                     <div class="col-md-6">
                         <div class="form-group">
@@ -121,7 +137,7 @@
                             <label for="inputTel" class="control-label">
                                 電話番号</label>
                             <div class="input-icon right">
-                                <input id="inputTel" type="text"　name="tel" class="form-control singleOnly" value = "{{ old('tel') }}" />
+                                <input id="inputTel" type="text" name="tel" class="form-control singleOnly" value = "{{ old('tel') }}" />
                             </div>
                         </div>
                     </div>
@@ -132,7 +148,7 @@
                             <label for="inputLine" class="control-label">
                                 LINE ID</label>
                             <div class="input-icon right">
-                                <input id="inputLine" type="text"　name="lineID" class="form-control singleOnly" value = "{{ old('lineID') }}" />
+                                <input id="inputLine" type="text" name="lineID" class="form-control singleOnly" value = "{{ old('lineID') }}" />
                             </div>
                         </div>
                     </div>
@@ -143,7 +159,7 @@
                             <label for="inputMsbyMail" class="control-label">
                                 結家アドレス</label>
                             <div class="input-icon right">
-                                <input id="inputMsbyMail" type="text"　name="msby_mail" class="form-control singleOnly" value = "{{ old('msby_mail') }}" />
+                                <input id="inputMsbyMail" type="text" name="msby_mail" class="form-control singleOnly" value = "{{ old('msby_mail') }}" />
                             </div>
                         </div>
                     </div>
@@ -154,7 +170,7 @@
                             <label for="inputOriginMail" class="control-label">
                                 転送用アドレス</label>
                             <div class="input-icon right">
-                                <input id="inputOriginMail" type="text"　name="original_mail" class="form-control singleOnly" value = "{{ old('original_mail') }}" />
+                                <input id="inputOriginMail" type="text" name="original_mail" class="form-control singleOnly" value = "{{ old('original_mail') }}" />
                             </div>
                         </div>
                     </div>
@@ -348,7 +364,7 @@
                             <label for="inputBank" class="control-label">
                                 銀行名</label>
                             <div class="input-icon right">
-                                <input id="inputBank" type="text"　name="bank" class="form-control" value = "{{ old('bank') }}" />
+                                <input id="inputBank" type="text" name="bank" class="form-control" value = "{{ old('bank') }}" />
                             </div>
                         </div>
                     </div>
@@ -359,7 +375,7 @@
                             <label for="inputBank_b" class="control-label">
                                 支店名</label>
                             <div class="input-icon right">
-                                <input id="inputBank_b" type="text"　name="bank_branch" class="form-control" value = "{{ old('bank_branch') }}" />
+                                <input id="inputBank_b" type="text" name="bank_branch" class="form-control" value = "{{ old('bank_branch') }}" />
                             </div>
                         </div>
                     </div>
@@ -384,7 +400,7 @@
                             <label for="inputBank_num" class="control-label">
                                 口座番号</label>
                             <div class="input-icon right">
-                                <input id="inputBank_num" type="text"　name="bank_number" class="form-control singleOnly" value = "{{ old('bank_number') }}" />
+                                <input id="inputBank_num" type="text" name="bank_number" class="form-control singleOnly" value = "{{ old('bank_number') }}" />
                             </div>
                         </div>
                     </div>

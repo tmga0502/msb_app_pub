@@ -20,6 +20,7 @@ class User extends Authenticatable
         'loginID',
         'password',
         'contract_type',
+        'contract_type2',
         'bank',
         'bank_branch',
         'bank_type',

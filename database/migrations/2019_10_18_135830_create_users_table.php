@@ -24,10 +24,11 @@ class CreateUsersTable extends Migration
             $table->integer('bank_type')->length(1)->nullable()->default(null);;
             $table->integer('bank_number')->length(10)->nullable()->default(null);;
             $table->string('contract_type', 20)->nullable()->default(null);
+            $table->string('contract_type2', 20)->nullable()->default(null);
             $table->text('licence')->nullable()->default(null);;
             $table->string('tel', 15)->nullable()->default(null);;
-            $table->string('msby_mail', 20)->nullable()->default(null);
-            $table->string('original_mail', 20)->nullable()->default(null);
+            $table->string('msby_mail', 100)->nullable()->default(null);
+            $table->string('original_mail', 100)->nullable()->default(null);
             $table->string('lineID', 50)->nullable()->default(null);
             $table->date('birthday')->nullable()->default(null);
             $table->string('zipcode', 12)->nullable()->default(null);

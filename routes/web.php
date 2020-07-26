@@ -551,7 +551,7 @@ Route::get('/root/wageLedger/{year}/{month}/{day}',[
 ]);
 
 //signUp画面
-Route::get('/root/signup/{year}/{month}/{day}',[
+Route::get('/root/signup',[
   'uses' => 'UserController@getSignup',
   'as' => 'root.signup'
 ]);
@@ -563,7 +563,7 @@ Route::post('/root/signup/create',[
 ]);
 
 // ユーザー一覧
-Route::get('/root/userList/{year}/{month}/{day}',[
+Route::get('/root/userList',[
 'uses' => 'RootController@getUserList',
 'as' => 'root.userList'
 ]);

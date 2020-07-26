@@ -76,11 +76,8 @@ class UserController extends Controller
 | サインアップ画面
 |--------------------------------------------------------------------------
 */
-    public function getSignup($year, $month, $day){
-        $now_year = $year;
-        $now_month = $month;
-        $now_day = $day;
-        return View('root.signup', compact('now_year', 'now_month', 'now_day'));
+    public function getSignup(){
+        return View('root.signup');
     }
 
 
@@ -97,6 +94,7 @@ class UserController extends Controller
         'password' => 'required|min:6',
         'contract_type' => 'required'
         ]);
+        $bank_number = ($request->bank_number == "") ? null : $request->bank_number;
         $birthday = ($request->birthday == "") ? null : $request->birthday;
         $hire = ($request->hire == "") ? null : $request->hire;
         $legal_hire = ($request->legal_hire == "") ? null : $request->legal_hire;
@@ -106,11 +104,12 @@ class UserController extends Controller
             'loginID' => $request->input('loginID'),
             'password' => bcrypt($request->input('password')),
             'contract_type' => $request->contract_type,
+            'contract_type2' => $request->contract_type2,
             'superUser' => $request->superUser,
             'bank' => $request->bank,
             'bank_branch' => $request->bank_branch,
             'bank_type' => $request->bank_type,
-            'bank_number' => $request->bank_number,
+            'bank_number' => $bank_number,
             'tel' => $request->tel,
             'lineID' => $request->lineID,
             'msby_mail' => $request->msby_mail,

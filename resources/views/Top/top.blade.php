@@ -57,7 +57,7 @@
                                 <a href="{{ route('getCdata') }}"></a>
                                 <h5 class="text-center text-info"><br>顧客管理</h5>
                                 @else
-                                <a href="{{ route('getCdata') }}"></a>
+                                <a href="#"></a>
                                 <h5 class="text-center text-info">【利用不可】<br><s>顧客管理</s></h5>
                                 @endif
                             </div>
@@ -69,7 +69,7 @@
                                 <a href="{{ route('pm.top',['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
                                 <h5 class="text-center text-info"><br>物件管理</h5>
                                 @else
-                                <a href="{{ route('pm.top',['year' => $year, 'month' => $month, 'day' => $day]) }}"></a>
+                                <a href="#"></a>
                                 <h5 class="text-center text-info">【利用不可】<br><s>物件管理</s></h5>
                                 @endif
                             </div>
@@ -127,4 +127,5 @@
     <!--END PAGE WRAPPER-->
     </div>
 </div>
+<!-- <a href="{{ route('root.signup') }}">新規登録</a> -->
 @endsection

@@ -85,6 +85,24 @@
                     </div>
                   </div>
 
+                  <!-- 雇用形態2 -->
+                  <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <span style="color:red;">※</span>雇用形態2</label>
+                            <div class="input-icon right">
+                              <select name="contract_type2" class="form-control">
+                                <option value=5 @if(old('contract_type')==5) selected  @endif>なし</option>
+                                <option value=0 @if(old('contract_type')==0)  @endif>業務委託</option>
+                                <option value=1 @if(old('contract_type')==1) selected  @endif>正社員</option>
+                                <option value=2 @if(old('contract_type')==2) selected  @endif>アルバイト・パート</option>
+                                <option value=3 @if(old('contract_type')==3) selected  @endif>役員</option>
+                                <option value=4 @if(old('contract_type')==4) selected  @endif>その他</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                   <!-- 銀行関連 -->
