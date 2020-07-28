@@ -96,16 +96,16 @@ class GetSchedule {
       if($myID->superUser == 1 ){
         $base_html[] = '<a href="' . url('/') . '/reserve_description/' . $routeID[$j] . '">
                 <div style="height:70px;border: 1px solid darkgray;border-radius: 1em;margin:4px;font-size:1em;color:black;background-color:skyblue;">
-                <p>' . $msg[$j] . '</p>
+                <p style="font-size:1.1rem;">' . $msg[$j] . '</p>
                 </div></a>';
       }elseif( $userID == $myID->id ){
         $base_html[] = '<a href="' . url('/') . '/reserve_description/' . $routeID[$j] . '">
                 <div style="height:70px;border: 1px solid darkgray;border-radius: 1em;margin:4px;font-size:1em;color:black;background-color:skyblue;">
-                <p>' . $msg[$j] . '</p>
+                <p style="font-size:1.1rem;">' . $msg[$j] . '</p>
                 </div></a>';
       }else{
         $base_html[] = '<div style="height:70px;border: 1px solid darkgray;border-radius: 1em;margin:4px;font-size:1em;color:black;background-color:silver;">
-                <p>' . $msg[$j] . '</p>
+                <p style="font-size:1.1rem;">' . $msg[$j] . '</p>
                 </div>';
       }
     }

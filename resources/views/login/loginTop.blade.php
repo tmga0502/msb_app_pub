@@ -65,7 +65,7 @@
                     </div>
                     </form>
                 </div>
-                <a href="{{ route('e_signup') }}">signup<a>
+                <!-- <a href="{{ route('e_signup') }}">signup<a> -->
             </div>
         </div>
     </div>
