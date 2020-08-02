@@ -76,7 +76,7 @@ class ReserveController extends Controller
         $date = $year .'-' . $month . '-' . $day;
 
         //【Aスペースの予定作成】
-        $data_A = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Aスペース');
+        $data_A = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Aスペース')->orderBy('start_time', 'asc');
         if ($data_A->exists()){
             $ID_A = $data_A->pluck('id');
             $userID_A = $data_A->pluck('user_id');
@@ -97,7 +97,7 @@ class ReserveController extends Controller
         $schedule_A = $schedule_instance->getScheduleTop($ID_A, $userID_A, $spaceName_A, $purpose_A, $description_A, $startTime_A, $endTime_A);
 
         //【Bスペースの予定作成】
-        $data_B = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Bスペース');
+        $data_B = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Bスペース')->orderBy('start_time', 'asc');
         if ($data_B->exists()){
             $ID_B = $data_B->pluck('id');
             $userID_B = $data_B->pluck('user_id');
@@ -118,7 +118,7 @@ class ReserveController extends Controller
         $schedule_B = $schedule_instance->getScheduleTop($ID_B, $userID_B, $spaceName_B, $purpose_B, $description_B, $startTime_B, $endTime_B);
 
         //【Cスペースの予定作成】
-        $data_C = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Cスペース');
+        $data_C = Schedule::where('date', '=',  $date)->where('space_name', '=', 'Cスペース')->orderBy('start_time', 'asc');
         if ($data_C->exists()){
             $ID_C = $data_C->pluck('id');
             $userID_C = $data_C->pluck('user_id');
@@ -139,7 +139,7 @@ class ReserveController extends Controller
         $schedule_C = $schedule_instance->getScheduleTop($ID_C, $userID_C, $spaceName_C, $purpose_C, $description_C, $startTime_C, $endTime_C);
 
         //【印鑑の予定作成】
-        $data_I = Schedule::where('date', '=',  $date)->where('space_name', '=', '印鑑');
+        $data_I = Schedule::where('date', '=',  $date)->where('space_name', '=', '印鑑')->orderBy('start_time', 'asc');
         if ($data_I->exists()){
             $ID_I = $data_I->pluck('id');
             $userID_I = $data_I->pluck('user_id');
@@ -160,7 +160,7 @@ class ReserveController extends Controller
         $schedule_I = $schedule_instance->getScheduleTop($ID_I, $userID_I, $spaceName_I, $purpose_I, $description_I, $startTime_I, $endTime_I);
 
         //【ZOOMの予定作成】
-        $data_Z = Schedule::where('date', '=',  $date)->where('space_name', '=', 'ZOOM');
+        $data_Z = Schedule::where('date', '=',  $date)->where('space_name', '=', 'ZOOM')->orderBy('start_time', 'asc');
         if ($data_Z->exists()){
             $ID_Z = $data_Z->pluck('id');
             $userID_Z = $data_Z->pluck('user_id');
