@@ -32,6 +32,10 @@ private $nominalForRoot19 = ['---', 'a', 'b', 'c', 'd', 'e'];
         return view('root.top',compact('now_year', 'now_month', 'now_day'));
     }
 
+    public function getTopPage(){
+      return view('root.topPage');
+  }
+
 /*
   |--------------------------------------------------------------------------
   | 振り込み額一覧表示

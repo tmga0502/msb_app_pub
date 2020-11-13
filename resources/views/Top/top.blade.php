@@ -90,6 +90,13 @@
                                 <h5 class="text-center text-info">報酬管理</h5>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/money.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                <a href="{{ route('root.topPage') }}"></a>
+                                <h5 class="text-center text-info">新報酬管理</h5>
+                            </div>
+                        </div>
                         <div class="col-md-3 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/setting.svg" width="30%" height="30%" style="margin-bottom:20px;">

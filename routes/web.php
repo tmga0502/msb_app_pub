@@ -233,112 +233,6 @@ Route::post('/commissions/other/create',[
 
 /*
   |--------------------------------------------------------------------------
-  | 物件管理システム
-  |--------------------------------------------------------------------------
-*/
-
-  // トップ
-  Route::get('/pm/top/{year}/{month}/{day}',[
-  'uses' => 'PmController@getTop',
-  'as' => 'pm.top'
-  ]);
-
-  // 物件登録画面表示
-  Route::get('/pm/create',[
-  'uses' => 'PmController@getCreate',
-  'as' => 'pm.create'
-  ]);
-
-  // 物件登録
-  Route::post('/pm/create/new',[
-  'uses' => 'PmController@postCreate',
-  'as' => 'pm.create_new'
-  ]);
-
-  // 物件一覧ページ
-  Route::get('/pm/list',[
-  'uses' => 'PmController@getList',
-  'as' => 'pm.list'
-  ]);
-
-  // 物件検索
-  Route::post('/pm/list_search',[
-  'uses' => 'PmController@postListSearch',
-  'as' => 'pm.list_search'
-  ]);
-
-  // 物件詳細ページ
-  Route::get('/pm/list/detail/{id}',[
-  'uses' => 'PmController@getDetail',
-  'as' => 'pm.detail'
-  ]);
-
-
-  // 物件詳細更新
-  Route::post('/pm/list/detail/update',[
-    'uses' => 'PmController@postUpdate',
-    'as' => 'pm.update'
-    ]);
-
-  // オーナー一覧ページ
-  Route::get('/pm/ownersList',[
-  'uses' => 'PmController@getOwnersList',
-  'as' => 'pm.ownersList'
-  ]);
-
-  // オーナー詳細ページ
-  Route::get('/pm/ownersList/detail/{id}',[
-  'uses' => 'PmController@getOwnersDetail',
-  'as' => 'pm.ownersDetail'
-  ]);
-
- // オーナー詳細更新
-  Route::post('/pm/ownersList/detail/update',[
-    'uses' => 'PmController@postOwnerUpdate',
-    'as' => 'pm.owner_update'
-    ]);
-
-
-  // 入金チェックページ
-  Route::get('/pm/check/{year}/{month}',[
-  'uses' => 'PmController@getCheck',
-  'as' => 'pm.check'
-  ]);
-
-  // 入金チェック更新
-  Route::post('/pm/check',[
-  'uses' => 'PmController@postCheck',
-  'as' => 'pm.check_update'
-  ]);
-
-  // 入金チェック検索
-  Route::post('/pm/check_search',[
-  'uses' => 'PmController@postCheckSearch',
-  'as' => 'pm.check_search'
-  ]);
-
-  // 振込明細作成物件一覧ページ
-  Route::get('/pm/tr_details',[
-  'uses' => 'PmController@getTrDetails',
-  'as' => 'pm.tr_details'
-  ]);
-
-  // 振込明細作成ページ
-  Route::get('/pm/sp_new/{id}',[
-  'uses' => 'PmController@getSpNew',
-  'as' => 'pm.sp_new'
-  ]);
-
-  // 振込明細ページ
-  Route::get('/pm/specification/{id}',[
-  'uses' => 'PmController@getSpecification',
-  'as' => 'pm.specification'
-  ]);
-
-
-
-/*
-  |--------------------------------------------------------------------------
   | 顧客管理関連
   |--------------------------------------------------------------------------
 */
@@ -475,10 +369,21 @@ Route::post('/profile/budgets/update',[
   ]);
 
 
+/*
+  |--------------------------------------------------------------------------
+  | 【新】管理者ツール
+  |--------------------------------------------------------------------------
+*/
+// 管理者ツールトップ
+Route::get('/root/toppage',[
+  'uses' => 'RootController@getTopPage',
+  'as' => 'root.topPage'
+  ]);
+
 
 /*
   |--------------------------------------------------------------------------
-  | 管理者ツール
+  | 【旧】管理者ツール
   |--------------------------------------------------------------------------
 */
 
