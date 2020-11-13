@@ -52,21 +52,21 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/keihi.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/save.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="#"></a>
                                 <h5 class="text-center text-info">経費登録</h5>
                             </div>
                         </div>
                         <div class="col-md-3 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/clock.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/file.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="#"></a>
                                 <h5 class="text-center text-info">口座CSV登録</h5>
                             </div>
                         </div>
                         <div class="col-md-3 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
-                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/clock.svg" width="30%" height="30%" style="margin-bottom:20px;">
+                                <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/aggregate.svg" width="30%" height="30%" style="margin-bottom:20px;">
                                 <a href="#"></a>
                                 <h5 class="text-center text-info">各種集計</h5>
                             </div>
