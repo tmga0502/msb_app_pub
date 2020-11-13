@@ -30,7 +30,7 @@
             @foreach($datas17 as $data)
               <tr>
                 <input type="hidden" name="id[{{ $data['id'] }}]" value="{{ $data['id'] }}">
-                <td>{{ $data -> bank_number }}</td>
+                <td>{{ $data->bank_number }}</td>
                 <td style="white-space: nowrap;">
                   @if($data['month'] < 10 and $data['day'] < 10 )
                     <input type="date" style="border:0px;" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-0' . $data['month'] . '-0' . $data['day']}}" readonly>
