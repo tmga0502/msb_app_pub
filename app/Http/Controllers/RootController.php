@@ -24,17 +24,53 @@ private $nominalForRoot19 = ['---', 'a', 'b', 'c', 'd', 'e'];
   | Topページ表示
   |--------------------------------------------------------------------------
 */
-    public function getTop(){
-        $dt = Carbon::now();
-        $now_year = $dt->year;
-        $now_month = $dt->month;
-        $now_day = $dt->day;
-        return view('root.top',compact('now_year', 'now_month', 'now_day'));
+  public function getTop(){
+    $dt = Carbon::now();
+    $now_year = $dt->year;
+    $now_month = $dt->month;
+    $now_day = $dt->day;
+    return view('root.top',compact('now_year', 'now_month', 'now_day'));
+  }
+
+  public function getTopPage(){
+    return view('root.topPage');
+  }
+
+/*
+  |--------------------------------------------------------------------------
+  | CSV登録・一覧ページ表示
+  |--------------------------------------------------------------------------
+*/
+  public function csvTop(){
+    $dt = Carbon::now();
+    if($dt->month == 1){
+      $now_year = $dt->year - 1;
+      $now_month = 12;
+    }else{
+      $now_year = $dt->year;
+      $now_month = $dt->month - 1;
+    }
+    $now_day = $dt->day;
+    $nominalForRoot17 = $this->nominalForRoot17;
+    $nominalForRoot19 = $this->nominalForRoot19;
+    $datas0 = Csv::where('bank_number', '=', 0)->where('year', '=', $now_year)->where('month', '=', $now_month)->get();
+    $datas17 = Csv::where('bank_number', '=', 17)->where('year', '=', $now_year)->where('month', '=', $now_month)->get();
+    $datas19 = Csv::where('bank_number', '=', 19)->where('year', '=', $now_year)->where('month', '=', $now_month)->get();
+    $lists = Csv::groupBy('bank_number', 'year','month')->paginate(6, ['bank_number', 'year', 'month']);
+    $userList = ['---'];
+    $users = User::select('name')->get();
+    foreach($users as $user){
+      $userList[] = $user->name;
     }
 
-    public function getTopPage(){
-      return view('root.topPage');
+    return view('root.csv',compact('now_year', 'now_month', 'now_day', 'datas0', 'datas17', 'datas19', 'lists', 'nominalForRoot17', 'nominalForRoot19', 'userList'));  
   }
+
+
+
+  
+
+/****** 以下旧データ。新データ完成後削除すること **********/
 
 /*
   |--------------------------------------------------------------------------

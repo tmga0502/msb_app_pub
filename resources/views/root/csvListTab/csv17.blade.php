@@ -5,7 +5,7 @@
       <div class="panel-heading">{{ $now_year }}年{{ $now_month }}月分入金リスト</div>
       <div class="panel-body">
         @if(isset($datas17[0]))
-        <table class="table table-hover table-borde" style="font-size: 8px;">
+        <table class="table table-hover table-borde" style="font-size: 10px;">
           <thead>
             <tr>
               <th style="white-space: nowrap;">口座名</th>
@@ -33,23 +33,25 @@
                 <td>{{ $data->bank_number }}</td>
                 <td style="white-space: nowrap;">
                   @if($data['month'] < 10 and $data['day'] < 10 )
-                    <input type="date" style="border:0px;" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-0' . $data['month'] . '-0' . $data['day']}}" readonly>
+                    <input type="hidden" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-0' . $data['month'] . '-0' . $data['day']}}">
+                    {{ $data['year'] . '-0' . $data['month'] . '-0' . $data['day']}}
                   @elseif($data['day'] < 10)
-                    <input type="date" style="border:0px;" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-' . $data['month'] . '-0' . $data['day']}}" readonly>
+                    <input type="hidden" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-' . $data['month'] . '-0' . $data['day']}}">
+                    {{ $data['year'] . '-' . $data['month'] . '-0' . $data['day']}}
                   @else
-                    <input type="date" style="border:0px;" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-' . $data['month'] . '-' . $data['day']}}" readonly>
+                    <input type="hidden" name="date[{{ $data['id'] }}]" value="{{ $data['year'] . '-' . $data['month'] . '-' . $data['day']}}">
+                    {{ $data['year'] . '-' . $data['month'] . '-' . $data['day']}}
                   @endif
                 </td>
-                <td style="white-space: nowrap;">{{ $data->name }}</td>
+                <td style="white-space: nowrap;padding:0px;">{{ $data->name }}{{ mb_strlen($data->name) }}</td>
                 <!-- 金額 -->
-                <td style="white-space: nowrap;">
-                  <div style="text-align:right;">
-                    <input type="text" style="text-align:right;" name="price[{{ $data['id'] }}]" value="{{ number_format($data['price']) }}" readonly>
-                  </div>
+                <td style="white-space: nowrap;text-align:right;">
+                  <input type="hidden" name="price[{{ $data['id'] }}]" value="{{ $data['price'] }}">
+                  {{ number_format($data['price']) }}
                 </td>
                 <!-- 名目 -->
-                <td style="white-space: nowrap;">
-                  <select name="nominal[{{ $data['id'] }}]" onchange="selectboxChange(this);" style="height: 20px; font-size: 8px;">
+                <td style="white-space: nowrap; padding:0">
+                  <select name="nominal[{{ $data['id'] }}]" onchange="selectboxChange(this);" style="padding:0px;font-size:10px;">
                     @for($i=0; $i < count($nominalForRoot17);$i++)
                     @if($data['nominal']==$nominalForRoot17[$i])
                     <option value="{{ $nominalForRoot17[$i] }}" selected>{{ $nominalForRoot17[$i] }}</option>
@@ -60,8 +62,8 @@
                   </select>
                 </td>
                 <!-- 担当 -->
-                <td style="white-space: nowrap;">
-                  <select name="person[{{ $data['id'] }}]" style="height: 20px; font-size: 8px;">
+                <td style="white-space: nowrap; padding:0">
+                  <select name="person[{{ $data['id'] }}]" style="padding:0px;font-size: 10px;">
                     @for($i=0; $i < count($userList);$i++)
                     @if($data['person']==$userList[$i])
                     <option value="{{ $userList[$i] }}" selected>{{ $userList[$i] }}</option>
@@ -72,7 +74,7 @@
                   </select>
                 </td>
                 <!-- 備考 -->
-                <td style="white-space: nowrap;">
+                <td style="white-space: nowrap; padding:0">
                   <textarea name="remark[{{ $data['id'] }}]" readonly>{{ $data['remark'] }}</textarea>
                 </td>
               </tr>

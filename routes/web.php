@@ -1,17 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 //ログイン画面Top
 Route::get('/',[
   'uses' => 'UserController@getLogin',
@@ -375,11 +363,23 @@ Route::post('/profile/budgets/update',[
   |--------------------------------------------------------------------------
 */
 // 管理者ツールトップ
-Route::get('/root/toppage',[
+  Route::get('/root/toppage',[
   'uses' => 'RootController@getTopPage',
   'as' => 'root.topPage'
   ]);
 
+/***  CSV登録・一覧ページ  ***/ 
+  //TOPページ
+  Route::get('/root/csvTop',[
+  'uses' => 'RootController@csvTop',
+  'as' => 'root.csvTop'
+  ]);
+
+  //CSV登録
+  Route::post('/root/csv',[
+  'uses' => 'CsvController@uploadCsv',
+  'as' => 'root.csv_upload'
+  ]);
 
 /*
   |--------------------------------------------------------------------------
@@ -405,11 +405,7 @@ Route::get('/root/toppage',[
  'as' => 'root.csv'
  ]);
 
- //CSV登録
- Route::post('/root/csv',[
- 'uses' => 'CsvController@uploadCsv',
- 'as' => 'root.csv_upload'
- ]);
+ 
 
  //CSV過去分表示
  Route::get('/root/backnumber/{b_number}/{year}/{month}',[

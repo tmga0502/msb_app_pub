@@ -9,9 +9,16 @@
     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
         <div class="page-header pull-left">
             <div class="page-title">
-                振込管理</span>
+                報酬管理</span>
             </div>
         </div>
+        <ol class="breadcrumb page-breadcrumb pull-right">
+            <li>
+                <a href="{{ route('getTop') }}">TOP</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            </li>
+            <li class="active">報酬管理</li>
+        </ol>
         <div class="clearfix">
         </div>
     </div>
@@ -60,7 +67,7 @@
                         <div class="col-md-3 col-md-offset-1">
                             <div class="panel panel-info linkbox" style="padding-top:25px;padding-bottom:25px;">
                                 <img class="center-block" src="{{ url('/') }}/KAdmin-Dark/images/icons/file.svg" width="30%" height="30%" style="margin-bottom:20px;">
-                                <a href="#"></a>
+                                <a href="{{ route('root.csvTop') }}"></a>
                                 <h5 class="text-center text-info">口座CSV登録</h5>
                             </div>
                         </div>
